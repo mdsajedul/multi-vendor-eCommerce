@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Drawer from 'react-modern-drawer'
 import 'react-modern-drawer/dist/index.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
+import { faCartShopping,faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { faUser,faHeart } from '@fortawesome/free-regular-svg-icons'
 import dokanIcon from '../../../Assets/icons/dokanIcon.svg'
 import './navigation.css'
@@ -21,6 +21,7 @@ const Navigation = () => {
     const shoppingCartIcon = <FontAwesomeIcon icon={faCartShopping} />
     const userIcon = <FontAwesomeIcon icon={faUser} />
     const heartIcon = <FontAwesomeIcon icon={faHeart} />
+    const searchIcon = <FontAwesomeIcon icon={faMagnifyingGlass} />
 
 
     return (
@@ -49,15 +50,11 @@ const Navigation = () => {
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                         <Navbar.Collapse id="responsive-navbar-nav">
                             <Nav className="me-auto ">
-                                <Form className="d-flex form-style">
-                                    <FormControl
-                                    type="search"
-                                    placeholder="Search"
-                                    className="me-2"
-                                    aria-label="Search"
-                                    />
-                                    <Button variant="outline-success">Search</Button>
-                                </Form>
+                                <form className="d-flex form-style">
+                                    <input type="text" placeholder='Search' />
+                                    
+                                    <button  className='search-btn'>{searchIcon}</button>
+                                </form>
                             </Nav>
                             <Nav>
                                 <button className='middle-btn' onClick={toggleDrawer}>{shoppingCartIcon}</button>

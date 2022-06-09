@@ -8,13 +8,27 @@ import { Form } from 'react-bootstrap';
 const Login = () => {
 
     const [pageStatus,setPageStatus] = useState('login')
+    const [email,setEmail] =useState('')
+    const [password,setPassword] = useState('')
+    const [rePassword,setRePassword] = useState('')
+    const [dob,setDob] = useState('')
+    const [gender,setGender] = useState('male')
+    const [fullname,setFullname] = useState('')
 
     const login =(e)=>{
         e.preventDefault()
+        console.log(email)
+        console.log(password)
     }
 
     const registration = (e) =>{
         e.preventDefault()
+        console.log(email)
+        console.log(password)
+        console.log(rePassword)
+        console.log(fullname)
+        console.log(dob)
+        console.log(gender)
     }
 
     return (
@@ -48,11 +62,11 @@ const Login = () => {
                             <form action="">
                                 <div>
                                     <label htmlFor="">Email</label> <br />
-                                    <input type="text" name="" id="" placeholder='Please enter your Email' />
+                                    <input type="text" onChange={(event)=>{setEmail(event.target.value)}} name="" id="" placeholder='Please enter your Email' />
                                 </div>
                                 <div>
                                     <label htmlFor=""> Password</label> <br />
-                                    <input type="password" name="" id="" placeholder='Please enter your Password' />
+                                    <input type="password" onChange={(event)=>{setPassword(event.target.value)}} name="" id="" placeholder='Please enter your Password' />
                                 </div>
 
                                 {
@@ -61,24 +75,24 @@ const Login = () => {
                                     <div>
                                          <div>
                                             <label htmlFor=""> Password</label> <br />
-                                            <input type="password" name="" id="" placeholder='Please Re-enter your Password' />
+                                            <input type="password" onChange={(event)=>{setRePassword(event.target.value)}} name="" id="" placeholder='Please Re-enter your Password' />
                                         </div>
 
                                         <div>
                                             <label htmlFor=""> Full Name</label> <br />
-                                            <input type="text" name="" id="" placeholder='Please enter your Fullname' />
+                                            <input type="text" onChange={(event)=>{setFullname(event.target.value)}} name="" id="" placeholder='Please enter your Fullname' />
                                         </div>
 
                                         <div className='row gx-0'>
                                             <div className="col-lg-8">
                                                 <Form.Group controlId="dob">
                                                     <Form.Label>Select Date</Form.Label>
-                                                    <Form.Control type="date" name="dob" placeholder="Date of Birth" />
+                                                    <Form.Control onChange={(event)=>{setDob(event.target.value)}} type="date" name="dob" placeholder="Date of Birth" />
                                                 </Form.Group>
                                             </div>
                                             <div className="col-lg-4">
                                                 <Form.Label>Gender</Form.Label>
-                                                <select class="form-select" aria-label="Default select example">
+                                                <select onChange={(event)=>{setGender(event.target.value)}} class="form-select" aria-label="Default select example">
                                                     <option selected value="male">Male</option>
                                                     <option value="female">Female</option>
                                                     <option value="other">Other</option>
