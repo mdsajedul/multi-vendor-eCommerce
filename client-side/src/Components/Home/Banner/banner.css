@@ -1,0 +1,21 @@
+.banner{
+    background-color: bisque;
+}
+
+.category{
+    background-color: white;
+    margin: 0px 80px;
+}
+
+.category ul{
+    list-style: none;
+    padding: 30px;
+}
+.category-btn {
+    text-decoration: none;
+    color: black;
+    line-height: 200%;
+}
+a:hover{
+    color: #DE7127 !important;
+}
