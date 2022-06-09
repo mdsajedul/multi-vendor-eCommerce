@@ -1,0 +1,24 @@
+.top-nav{
+    background-color: #F0F1F3 !important;
+}
+.top-link{
+    padding-right: 25px;
+    text-decoration: none;
+    color: #6C6D6E;
+}
+
+ a:hover {
+    color: black !important;
+}
+
+.middle-btn{
+    background-color: white;
+    border: none;
+    margin-right: 45px;
+    font-size: 25px;
+    padding: 5px;
+}
+.form-style{
+    width: 500px;
+    margin-left: 70px;
+}

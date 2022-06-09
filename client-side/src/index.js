@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+<script src="https://kit.fontawesome.com/33d204ebaf.js" crossorigin="anonymous"></script>
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

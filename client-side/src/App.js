@@ -7,7 +7,7 @@ import Navigation from './Components/Shared/Navigation/Navigation';
 
 function App() {
   return (
-    <div>
+    <div className>
         <BrowserRouter>
           <Navigation/>
             <Routes>
