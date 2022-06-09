@@ -12,6 +12,10 @@ const Home = () => {
 
     const [proudcts,setProducts] = useState([])
 
+    const featuredCategories = [
+        
+    ]
+
 
     useEffect(()=>{
         fetch('products.json')
@@ -34,6 +38,12 @@ const Home = () => {
                     {
                         proudcts.slice(0, 6).map(product=><Product product={product} key={product.key}/>)
                     }
+                </div>
+            </div>
+
+            <div className='Featured-categories'>
+                <div>
+                    <h3> Featured Categories </h3>
                 </div>
             </div>
         </div>

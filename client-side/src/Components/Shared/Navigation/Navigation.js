@@ -45,7 +45,7 @@ const Navigation = () => {
             <div className='middle-nav'>
                 <Navbar collapseOnSelect expand="lg"  >
                     <Container>
-                        <Navbar.Brand href="#home"><img src={dokanIcon} height='65px' alt="" /> </Navbar.Brand>
+                        <Navbar.Brand href="/home"><img src={dokanIcon} height='65px' alt="" /> </Navbar.Brand>
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                         <Navbar.Collapse id="responsive-navbar-nav">
                             <Nav className="me-auto ">
@@ -62,14 +62,14 @@ const Navigation = () => {
                             <Nav>
                                 <button className='middle-btn' onClick={toggleDrawer}>{shoppingCartIcon}</button>
                                 <button className='middle-btn' onClick={toggleDrawer}>{heartIcon}</button>
-                                <button className='middle-btn' onClick={toggleDrawer}> 
+                                <Link to='/login' className='middle-btn'> 
                                     <div className='d-flex align-items-center'>
                                     {userIcon}
                                         <div style={{fontSize:'14px',paddingLeft:'10px'}}>
                                             Login <br /> Signup
                                         </div>
                                     </div>  
-                                </button>
+                                </Link>
 
 
                                 <Drawer

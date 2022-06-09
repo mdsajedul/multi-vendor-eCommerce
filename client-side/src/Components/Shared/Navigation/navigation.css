@@ -11,12 +11,20 @@
     color: black !important;
 }
 
+.middle-nav{
+    background-color: white;
+}
+
+
+
 .middle-btn{
     background-color: white;
     border: none;
     margin-right: 45px;
     font-size: 25px;
     padding: 5px;
+    text-decoration: none;
+    color: black;
 }
 .form-style{
     width: 500px;
