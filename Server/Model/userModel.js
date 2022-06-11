@@ -5,6 +5,10 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required:true,
     },
+    username:{
+        type: String,
+        required: true
+    },
     dob:{
         type:Date,
         required: true
@@ -23,9 +27,9 @@ const UserSchema = new mongoose.Schema({
     },
     role:{
         type:String,
-        enum:['user']
+        enum:['user','seller','admin','rider'],
+        default:'user'
     }
-
 })
 
 const User = mongoose.model("User", UserSchema);

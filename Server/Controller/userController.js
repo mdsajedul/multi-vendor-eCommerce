@@ -1,22 +1,34 @@
-const userModel = require('../Model/userModel');
+const User = require('../Model/userModel');
+const bcrypt = require("bcrypt")
 
 const test =  (req,res,next)=>{
      res.send('test');
 }
 
 const userRegistration  = async (req,res,next)=>{
-    const userRegistrationData = req.body;
-    console.log(userRegistrationData)
-    const user = new userModel(userRegistrationData)
-
     try {
-        await user.save()
-        res.status(200).send({user:user,message:'Registration Complete'})
+        const hashedPassword = await bcrypt.hash(req.body.password, 10)
+
+        const newUser = new User({
+            name: req.body.name,
+            username: req.body.username,
+            email: req.body.email,
+            password: hashedPassword,
+            dob: req.body.dob,
+            gender: req.body.gender
+        })
+        console.log(newUser)
+        await newUser.save()
+        res.status(200).json({"message":"Registration Successfull"})
+
     }
     catch(err){
-        res.status(500).send(err)
+        res.status(500).send({
+            "error":err,
+            "message":"Registration failed"
+        })
     }
 
 }
 
-module.exports = {userRegistration,test}
+module.exports = {userRegistration,test} 
