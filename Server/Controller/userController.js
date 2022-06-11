@@ -66,4 +66,24 @@ const userRegistration  = async (req,res,next)=>{
 
 }
 
-module.exports = {userRegistration,login} 
+const changeRole = async (req,res,next)=>{
+    try{
+        const userId = req.userId;
+        console.log(userId)
+        const role = req.body.role;
+        const query = {userId: userId}
+        const respone = await User.findOneAndUpdate(query,{role:role})
+        res.status(200).json({
+            'message':'Updated',
+            'response':respone
+        })
+    }
+    catch(err){
+        res.status(500).send({
+            "error":err,
+            "message":"Registration failed"
+        })
+    }
+}
+
+module.exports = {userRegistration,login,changeRole} 
