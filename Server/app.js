@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 require('dotenv').config();
 const userRouter = require('./routeHandler/userHandler')
+const sellerRouter = require('./routeHandler/sellerHandler')
 
 
 const app = express();
@@ -31,7 +32,7 @@ app.get('/',(req,res)=>{
 // app.use('/',products);
 app.use('/user',userRouter)
 // app.use('/admin',adminRouter)
-// app.use('/seller',sellerRouter)
+app.use('/seller',sellerRouter)
 // app.use('/rider',riderRouter)
 
 

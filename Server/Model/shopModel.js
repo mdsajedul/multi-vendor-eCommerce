@@ -9,11 +9,17 @@ const ShopSchema = new mongoose.Schema({
         type: Buffer
     },
     rating:{
-        type: Number
+        type: Number,
+        default: 0
     },
-    userId:{
+    sellerId:{
         type: String,
         required: true
+    },
+    status:{
+        type: String,
+        enum:['active','inactive'],
+        default:'inactive'
     }
 })
 
