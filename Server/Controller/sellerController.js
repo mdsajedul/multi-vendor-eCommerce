@@ -1,10 +1,35 @@
 const Shop = require('../Model/shopModel')
 const User = require('../Model/userModel')
+const Product = require('../Model/productModel')
 
-const test = (req,res,next)=>{
-    res.send('test')
+
+//post a product 
+const postProduct = async (req,res,next)=>{
+    try{
+
+        const shopDetail = await Shop.find({_id: req.userId})
+
+        const newProduct = new Product({
+            name: req.body.name,
+            shopId: shopDetail._id,
+            shopName: shopDetail.name,
+            sellerId: req.userId,
+            price: req.body.price,
+            productDetail: req.body.productDetail,
+            quantity: req.body.quantity,
+            features: req.body.features,
+            category:req.body.category
+        })
+
+        await newProduct.save();
+        res.status(200).json({'message':'New product created!','product':newProduct})
+    }
+    catch(err){
+        res.status(500).json({'message':'Someting went wrong, Please try again!'})
+    }
 }
 
+// seller create shop 
 const createShop = async (req,res,next)=>{
     
     try{
@@ -43,4 +68,4 @@ const createShop = async (req,res,next)=>{
 
 }
 
-module.exports ={ createShop, test}
+module.exports ={ createShop,postProduct}
