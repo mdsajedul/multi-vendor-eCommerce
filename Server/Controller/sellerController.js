@@ -68,6 +68,44 @@ const getProductById = async (req,res,next)=>{
     }
 }
 
+//get product by category
+const getProductByCategory = async (req,res,next)=>{
+    try{
+        const shopDetail = await Shop.find({sellerId: req.userId})
+        const products = await Product.find({shopId: shopDetail[0]._id,category:req.params.category})
+        res.status(200).json({'message':'All products of the shop','products':products})
+    }
+    catch(err){
+        res.status(500).json({'message':'Someting went wrong, Please try again!'})
+    }
+}
+
+
+// update product by id 
+const updateProduct = async (req,res,next)=>{
+    try{
+        const filesName = req.files.map(file=>{
+            return file.filename
+        })
+
+        const product = await Product.findById(req.params.id)
+        product.name = req.body.name
+        product.price = req.body.price
+        product.productDetail = req.body.productDetail
+        product.quantity = req.body.quantity
+        product.features = req.body.features
+        product.category = req.body.category
+        product.pictures = filesName
+        await product.save()
+        res.status(200).json({'message':'Product updated','product':product})
+    }
+    catch(err){
+        res.status(500).json({'message':'Someting went wrong, Please try again!'})
+    }
+}
+
+
+
 // delete product 
 
 const deleteProduct = async (req,res,next)=>{
@@ -173,4 +211,4 @@ const deleteShop = async (req,res,next)=>{
 }
 
 
-module.exports ={ createShop,postProduct,getAllProducts, getProductById, getShop,updateShop }
+module.exports ={ createShop,postProduct,getAllProducts, getProductById, getShop,updateShop,getProductByCategory,deleteShop, deleteProduct , updateProduct}
