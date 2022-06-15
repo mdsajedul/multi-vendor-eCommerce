@@ -6,7 +6,7 @@ const ShopSchema = new mongoose.Schema({
         required: true
     },
     profilePicture:{
-        type: Buffer
+        type: String,
     },
     rating:{
         type: Number,
@@ -20,6 +20,15 @@ const ShopSchema = new mongoose.Schema({
         type: String,
         enum:['active','inactive'],
         default:'inactive'
+    },
+    description:{
+        type: String
+    },
+    phone:{
+        type: String
+    },
+    email:{
+        type: String
     }
 })
 
