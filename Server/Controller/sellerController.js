@@ -1,6 +1,8 @@
 const Shop = require('../Model/shopModel')
 const User = require('../Model/userModel')
 const Product = require('../Model/productModel')
+const mongoose = require('mongoose')
+
 
 
 
@@ -14,7 +16,7 @@ const Product = require('../Model/productModel')
 ** All APIs for Product 
 */
 
-//post a product 
+//post a product  --tested
 const postProduct = async (req,res,next)=>{
     try{
         const filesName = req.files.map(file=>{
@@ -44,7 +46,7 @@ const postProduct = async (req,res,next)=>{
     }
 }
 
-//get all products of a shop
+//get all products of a shop  
 
 const getAllProducts = async (req,res,next)=>{
     try{
@@ -124,7 +126,7 @@ const deleteProduct = async (req,res,next)=>{
 **All APIs for SHOP
 */
 
-//get shop 
+//get shop  --tested
 const getShop = async (req,res,next)=>{
     try{
         const shopDetail = await Shop.find({sellerId: req.userId})
@@ -135,11 +137,16 @@ const getShop = async (req,res,next)=>{
     }
 }
 
-// seller update shop
+
+
+// seller update shop --tested
+/** 
+*! here is some problem with file updating, without filename it is not working
+*/
 const updateShop = async (req,res,next)=>{
     try{
         const shopDetail = await Shop.find({sellerId: req.userId})
-        const shop = await Shop.findByIdAndUpdate(shopDetail[0]._id,{
+        const shop = await Shop.findOneAndUpdate({sellerId: req.userId},{
             name: req.body.name,
             address: req.body.address,
             phone: req.body.phone,
@@ -150,19 +157,23 @@ const updateShop = async (req,res,next)=>{
         res.status(200).json({'message':'Shop updated','shop':shop})
     }
     catch(err){
+        console.log(err)
         res.status(500).json({'message':'Someting went wrong, Please try again!'})
     }
 }
 
-// seller create shop 
+// seller create shop  --tested
 const createShop = async (req,res,next)=>{
     
     try{
 
         const user = await User.find({_id: req.userId})
         console.log(user)
+        console.log(req.body)
+        console.log(req.file)
         if(user && user.length>0){
             if(user[0].role==='seller'){
+                console.log('seller exists')
                 const newShop = new Shop({
                     name:req.body.name,
                     sellerId: req.userId,
@@ -172,6 +183,7 @@ const createShop = async (req,res,next)=>{
                     profilePicture: req.file.filename
 
                 })
+
                 console.log(req.userId)
                 await newShop.save()
         
@@ -198,12 +210,14 @@ const createShop = async (req,res,next)=>{
 
 }
 
-// delete shop 
+// delete shop --tested
 const deleteShop = async (req,res,next)=>{
     try{
+
         const shopDetail = await Shop.find({sellerId: req.userId})
         const shop = await Shop.findByIdAndDelete(shopDetail[0]._id)
-        res.status(200).json({'message':'Shop deleted','shop':shop})
+        const products= await Product.deleteMany({shopId:shopDetail[0]._id})
+        res.status(200).json({'message':`Shop deleted`,'shop':shop,'products':products})
     }
     catch(err){
         res.status(500).json({'message':'Someting went wrong, Please try again!'})

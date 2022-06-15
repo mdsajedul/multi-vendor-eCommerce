@@ -20,7 +20,8 @@ const login = async (req,res,next)=>{
 
                 res.status(200).json({
                     "access_token":token,
-                    "message":"Login successfull"
+                    "message":"Login successfull",
+                    "user":user[0]
                 })
             }
             else{
@@ -66,12 +67,13 @@ const userRegistration  = async (req,res,next)=>{
 
 }
 
+
 const changeRole = async (req,res,next)=>{
     try{
         const userId = req.userId;
         console.log(userId)
         const role = req.body.role;
-        const query = {userId: userId}
+        const query = {_id: userId}
         const respone = await User.findOneAndUpdate(query,{role:role})
         res.status(200).json({
             'message':'Updated',

@@ -6,10 +6,10 @@ const { uploadSingle,uploadMultiple } = require('../middlewares/fileUploader')
 const router  = express.Router()
 
 // shop 
-router.post('/create-shop',checkLogin,createShop)
+router.post('/create-shop',checkLogin,uploadSingle,createShop)
 router.get('/get-shop',checkLogin,getShop)
-router.put('/update-shop/:id',checkLogin,uploadSingle,updateShop)
-router.delete('/delete-shop/:id',checkLogin,deleteShop)
+router.put('/update-shop',checkLogin,uploadSingle,updateShop)
+router.delete('/delete-shop',checkLogin,deleteShop)
 
 // product 
 router.post('/post-product', checkLogin,uploadMultiple,postProduct)
