@@ -7,18 +7,19 @@ const Product = require('../Model/productModel')
 const postProduct = async (req,res,next)=>{
     try{
 
-        const shopDetail = await Shop.find({_id: req.userId})
+        const shopDetail = await Shop.find({sellerId: req.userId})
 
         const newProduct = new Product({
             name: req.body.name,
-            shopId: shopDetail._id,
-            shopName: shopDetail.name,
+            shopId: shopDetail[0]._id,
+            shopName: shopDetail[0].name,
             sellerId: req.userId,
             price: req.body.price,
             productDetail: req.body.productDetail,
             quantity: req.body.quantity,
             features: req.body.features,
-            category:req.body.category
+            category:req.body.category,
+            pictures:req.file.filename
         })
 
         await newProduct.save();

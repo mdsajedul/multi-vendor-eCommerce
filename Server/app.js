@@ -9,6 +9,7 @@ const sellerRouter = require('./routeHandler/sellerHandler')
 const app = express();
 app.use(express.json())
 app.use(bodyParser.urlencoded({extended:false}))
+app.use(express.static(__dirname+"./public/"));
 
 const username = process.env.USERNAME
 const dbname = process.env.DB_NAME

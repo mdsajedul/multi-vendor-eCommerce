@@ -35,7 +35,7 @@ const ProductSchema = new mongoose.Schema({
         type: String
     }],
     pictures:[{
-        type: Buffer
+        type: String
     }],
     category:[{
         type: String
