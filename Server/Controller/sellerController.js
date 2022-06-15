@@ -6,7 +6,10 @@ const Product = require('../Model/productModel')
 //post a product 
 const postProduct = async (req,res,next)=>{
     try{
-
+        const filesName = req.files.map(file=>{
+            return file.filename
+        })
+        
         const shopDetail = await Shop.find({sellerId: req.userId})
 
         const newProduct = new Product({
@@ -19,7 +22,7 @@ const postProduct = async (req,res,next)=>{
             quantity: req.body.quantity,
             features: req.body.features,
             category:req.body.category,
-            pictures:req.file.filename
+            pictures: filesName
         })
 
         await newProduct.save();
