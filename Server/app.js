@@ -5,6 +5,7 @@ require('dotenv').config();
 const userRouter = require('./routeHandler/userHandler')
 const sellerRouter = require('./routeHandler/sellerHandler')
 const adminRouter = require('./routeHandler/adminHandler')
+const riderRouter = require('./routeHandler/riderHandler')
 
 
 const app = express();
@@ -31,11 +32,11 @@ mongoose.connect( `mongodb://localhost/dokan`,{
 app.get('/',(req,res)=>{
     res.send('Hello from Server')
 })
-// app.use('/',products);
+
 app.use('/user',userRouter)
 app.use('/admin',adminRouter)
 app.use('/seller',sellerRouter)
-// app.use('/rider',riderRouter)
+app.use('/rider',riderRouter)
 
 
 app.listen(PORT,()=>{

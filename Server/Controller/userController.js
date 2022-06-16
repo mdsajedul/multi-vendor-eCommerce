@@ -4,6 +4,11 @@ const jwt = require('jsonwebtoken')
 const Product = require('../Model/productModel');
 
 
+/** 
+** All the functions below are for users
+** 1. getAllProduct 2. getProductByCategory 3.login 4.Registration 5.change role
+*/
+
 
 // get all product --tested
 const getAllProducts = async (req,res,next)=>{

@@ -1,6 +1,12 @@
 const Shop =require('../Model/shopModel')
 const User =require('../Model/userModel')
 
+
+/** 
+** All APIs for admin
+* * 1. get all shops, 2. get shop by shop status, 3. get all users, 4. get all users by role
+*/
+
 // get all shops --tested
 const getAllShops = async (req,res,next)=>{
     try{
