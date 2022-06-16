@@ -1,30 +1,35 @@
-const {createSlice} = require('@reduxjs/toolkit')
+import axios from 'axios'
 
-const initialProducts = {
-    products: [],
-    loading: false,
-    error: null
-}
+const {createSlice, createAsyncThunk} = require('@reduxjs/toolkit')
+
+
+export const fetchProducts = createAsyncThunk("products/fetchProducts", async()=>{
+    const response = await axios.get(`http://localhost:8000/user/products`);
+    return response.data
+})
 
 export const productSlice = createSlice({
     name:"products",
-    initialState: initialProducts,
-    reducers:{
-       getProductsStart: (state)=>{
-            state.loading = true
-       },
-        getProductsSuccess : (state, action) =>{
-            state.loading = false
-            state.products = action.payload
-            state.error = null
-        },
-        getProductsFailure : (state, action) =>{
-            state.loading = false
-            state.products = []
-            state.error = action.payload
-        }
+    initialState: {
+        products: [],
+        isLoading: false,
+        error: null
+    },
+    extraReducers: (builder)=>{
+        builder.addCase(fetchProducts.pending, (state)=>{
+            state.isLoading = true;
+        });
+        builder.addCase(fetchProducts.fulfilled, (state,action)=>{
+            state.isLoading = false;
+            state.products = action.payload;
+            state.error = null;
+        });
+        builder.addCase(fetchProducts.rejected, (state,action)=>{
+            state.isLoading = false;
+            state.products = [];
+            state.error = action.error.message;
+        })
     }
 })
 
-export const {getProductsStart, getProductsSuccess, getProductsFailure} = productSlice.actions;
 export default productSlice.reducer;

@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const cors = require('cors')
 require('dotenv').config();
 const userRouter = require('./routeHandler/userHandler')
 const sellerRouter = require('./routeHandler/sellerHandler')
@@ -12,6 +13,7 @@ const app = express();
 app.use(express.json())
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(express.static(__dirname+"./public/"));
+app.use(cors())
 
 const username = process.env.USERNAME
 const dbname = process.env.DB_NAME

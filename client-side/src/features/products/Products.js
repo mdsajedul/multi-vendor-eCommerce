@@ -1,8 +1,15 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchProducts } from './ProductsSlice';
 
 const Products = () => {
-    const products = useSelector((state)=>state.productsReducer.products)
+    const products = useSelector((state)=> console.log(state))
+    const dispatch = useDispatch()
+
+    useEffect(()=>{
+        dispatch(fetchProducts())
+    },[])
+
     console.log(products)
     return (
         <div>
