@@ -1,9 +1,42 @@
 const User = require('../Model/userModel');
 const bcrypt = require("bcrypt")
 const jwt = require('jsonwebtoken')
+const Product = require('../Model/productModel');
 
 
 
+// get all product --tested
+const getAllProducts = async (req,res,next)=>{
+    try{
+        const products = await Product.find()
+        res.status(200).json(
+            products
+        )
+    }
+    catch(err){
+        res.status(500).json({
+            message:err
+        })
+    }
+}
+
+// get all product by category --tested
+const getProductByCategory = async (req,res,next)=>{
+    try{
+        const products = await Product.find({category: req.params.category})
+        res.status(200).json(
+            products
+        )
+    }
+    catch(err){
+        res.status(500).json({
+            message:err
+        })
+    }
+}
+
+
+// login --tested
 const login = async (req,res,next)=>{
     try{
         const user = await User.find({email: req.body.email})
@@ -41,6 +74,7 @@ const login = async (req,res,next)=>{
     }
 }
 
+// registration --tested
 const userRegistration  = async (req,res,next)=>{
     try {
         const hashedPassword = await bcrypt.hash(req.body.password, 10)
@@ -67,7 +101,7 @@ const userRegistration  = async (req,res,next)=>{
 
 }
 
-
+// change role  --tested
 const changeRole = async (req,res,next)=>{
     try{
         const userId = req.userId;
@@ -88,4 +122,4 @@ const changeRole = async (req,res,next)=>{
     }
 }
 
-module.exports = {userRegistration,login,changeRole} 
+module.exports = {userRegistration,login,changeRole, getAllProducts, getProductByCategory} 
