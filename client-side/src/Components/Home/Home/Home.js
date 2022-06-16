@@ -5,6 +5,7 @@ import Banner from '../Banner/Banner';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretRight } from '@fortawesome/free-solid-svg-icons'
 import Product from '../../Products/Product/Product';
+import Products from '../../../features/products/Products';
 
 const Home = () => {
 
@@ -44,6 +45,7 @@ const Home = () => {
             <div className='Featured-categories'>
                 <div>
                     <h3> Featured Categories </h3>
+                    <Products/>
                 </div>
             </div>
         </div>
