@@ -11,6 +11,7 @@ const ProductDetail = () => {
     const [yourReview,setYourReview] = useState('')
     const [reviewMessage,setReviewMessage] = useState('Please buy product for review')
     const {productId} = useParams()
+    console.log(productId)
  
 
     let navigate = useNavigate()
@@ -22,24 +23,24 @@ const ProductDetail = () => {
         fetch('/products.json')
         .then(res=>res.json())
         .then(data=>{
-            const result = data.find( o=> o.key === productId);
+            const result = data.find( o=> o._id === productId);
             setProduct(result);
         })
         
     },[productId])
 
-
+    
 
     return (
         <div className='container product-detail-container my-5'>
             <div className="row">
                 <div className="col-lg-4">
-                    <img className='container-fluid' src={product?.img} alt="" />
+                    <img className='container-fluid' src={product?.thumbnail} alt="" />
                 </div>
                 <div className="col-lg-4">
-                    <h5>{product.name}</h5>
+                    <h5>{product?.name}</h5>
                     <hr />
-                    <h4 style={{color:'#DE7127'}}> $ {product.price} </h4>
+                    <h4 style={{color:'#DE7127'}}> $ {product?.retailPrice} </h4>
                 </div>
               
                 <div className="col-lg-4">

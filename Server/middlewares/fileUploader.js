@@ -10,10 +10,14 @@ var Storage = multer.diskStorage({
 
 var uploadSingle = multer({
     storage:Storage
-}).single('file')
+})
+
+var thumbnail = multer({
+    storage:Storage
+}).single('thumbnail')
 
 var uploadMultiple = multer({
     storage:Storage
-}).array('file',3)
+})
 
-module.exports = {uploadSingle, uploadMultiple}
+module.exports = {uploadSingle, uploadMultiple, thumbnail}

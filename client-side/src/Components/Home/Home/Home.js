@@ -42,11 +42,17 @@ const Home = () => {
                 </div>
             </div>
 
-            <div className='Featured-categories'>
+            <div className='container featured-categories'>
                 <div>
                     <h3> Featured Categories </h3>
-                    <Products/>
                 </div>
+            </div>
+
+            <div className='container all-products'>
+                <div>
+                    <h4>Just For You</h4>
+                </div>
+            <Products/>
             </div>
         </div>
     );

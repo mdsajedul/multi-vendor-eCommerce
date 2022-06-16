@@ -23,6 +23,8 @@ const postProduct = async (req,res,next)=>{
             return file.filename
         })
 
+        console.log(req)
+
         const shopDetail = await Shop.find({sellerId: req.userId})
 
         const newProduct = new Product({
@@ -30,12 +32,14 @@ const postProduct = async (req,res,next)=>{
             shopId: shopDetail[0]._id,
             shopName: shopDetail[0].name,
             sellerId: req.userId,
-            price: req.body.price,
+            purchasePrice: req.body.purchasePrice,
+            retailPrice: req.body.retailPrice,
             productDetail: req.body.productDetail,
             quantity: req.body.quantity,
             features: req.body.features,
             category:req.body.category,
-            pictures: filesName
+            pictures: filesName,
+            thumbnail: filesName[0]
         })
 
         await newProduct.save();
@@ -180,7 +184,8 @@ const createShop = async (req,res,next)=>{
                     description: req.body.description,
                     phone: req.body.phone,
                     email: req.body.email,
-                    profilePicture: req.file.filename
+                    profilePicture: req.file.filename,
+                    
 
                 })
 

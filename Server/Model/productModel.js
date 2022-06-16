@@ -17,9 +17,13 @@ const ProductSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    price:{
+    purchasePrice: {
         type: Number,
-        requied: true
+        required: true
+    },
+    retailPrice: {
+        type: Number,
+        required: true
     },
     productDetail:{
         type: String
@@ -39,7 +43,11 @@ const ProductSchema = new mongoose.Schema({
     }],
     category:[{
         type: String
-    }]
+    }],
+    thumbnail: {
+        type: String
+        
+    }
 
 })
 
