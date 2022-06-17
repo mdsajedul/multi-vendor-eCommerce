@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import './login.css'
 import loginImg from '../../../Assets/icons/login.svg'
 import { Form } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
+import { login } from './loginSlice';
+import { registration } from './registrationSlice';
 
 
 const Login = () => {
@@ -14,21 +17,39 @@ const Login = () => {
     const [dob,setDob] = useState('')
     const [gender,setGender] = useState('male')
     const [fullname,setFullname] = useState('')
+    const [errMsg,setErrMsg]=useState('')
+    const dispatch = useDispatch();
 
-    const login =(e)=>{
+    const loginFunc =(e)=>{
         e.preventDefault()
-        console.log(email)
-        console.log(password)
+        console.log(email,password)
+        const data ={
+            email:email,
+            password:password
+        }
+        dispatch(login(data))
     }
 
-    const registration = (e) =>{
+    const registrationFunc = (e) =>{
         e.preventDefault()
-        console.log(email)
-        console.log(password)
-        console.log(rePassword)
-        console.log(fullname)
-        console.log(dob)
-        console.log(gender)
+
+        const data ={
+            email: email,
+            password: password,
+            fullname: fullname,
+            dob: dob,
+            gender: gender
+        }
+
+        if(password===rePassword){
+            dispatch(registration(data))
+        }
+        else{
+            setErrMsg("Passwords not matched")
+        }
+
+        console.log(errMsg)
+        
     }
 
     return (
@@ -111,7 +132,7 @@ const Login = () => {
                                             <Link to=''>Forget Password?</Link>
                                         </div>
                                         <div>
-                                            <input onClick={login} type="submit" value='Login' />
+                                            <input onClick={loginFunc} type="submit" value='Login' />
                                         </div>
 
                                         <div>
@@ -122,7 +143,7 @@ const Login = () => {
                                     :
                                     <div>
                                         <div>
-                                            <input onClick={registration} type="submit" value='Registration' />
+                                            <input onClick={registrationFunc} type="submit" value='Registration' />
                                         </div>
                                     </div>
                                 }

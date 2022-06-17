@@ -86,7 +86,7 @@ const userRegistration  = async (req,res,next)=>{
 
         const newUser = new User({
             name: req.body.name,
-            username: req.body.username,
+            username: req.body.name.split(' ')[0].toLowerCase(),
             email: req.body.email,
             password: hashedPassword,
             dob: req.body.dob,
