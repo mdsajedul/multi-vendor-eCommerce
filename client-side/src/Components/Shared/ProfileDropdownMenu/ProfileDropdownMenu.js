@@ -39,7 +39,7 @@ const ProfileDropdownMenu = ({user,isAuth,isLoading,error}) => {
                         <Link to=''> 
                             <table>
                                 {
-                                    user.user.role== 'user'? 
+                                    user.user.role=== 'user'? 
                                 <tr>
                                     <td>{userIcon}</td>
                                     <td>Manage Account</td>

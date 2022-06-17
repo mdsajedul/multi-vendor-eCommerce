@@ -20,7 +20,11 @@ const Navigation = () => {
     }
 
     const {isAuth,isLoading,user,error} = useSelector((state)=>state.loginReducer)
-    console.log(isAuth)
+    sessionStorage.setItem('user',JSON.stringify({access_token:user?.access_token,user:user?.user,isAuth:isAuth}))
+
+    
+    const session = JSON.parse(sessionStorage.getItem('user'))
+    
 
 
     const shoppingCartIcon = <FontAwesomeIcon style={{color:'#DE7127'}} icon={faCartShopping} />
@@ -67,7 +71,7 @@ const Navigation = () => {
                                 
                                 
                             {
-                                isAuth? <div className='d-flex   align-items-center'>
+                                session.isAuth? <div className='d-flex   align-items-center'>
                                     <ProfileDropdownMenu user = {user} isAuth={isAuth} isLoading ={isLoading} error={error}/>
                                 </div> :
                                     <Link to='/login'  style={{color:'#DE7127'}} className='middle-btn'> 
