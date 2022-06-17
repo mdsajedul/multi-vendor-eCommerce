@@ -12,8 +12,8 @@ const Product = ({product}) => {
                 <div className='product-card p-2'>
                     <div>
                         <div>
-                            <img className='container-fluid' src={`http://localhost:8000/uploads/${product?.thumbnail}` || product.img} alt="" />
-                        </div>
+                            <img className='container-fluid' src={`http://localhost:8000/uploads/${product?.thumbnail}`} alt="product" />
+                        </div> 
                         <div className='py-3'>
                             <p>{product.name.substring(0,18)}</p>
                             <p><b>Price: {product.retailPrice || product.price}$</b> </p>

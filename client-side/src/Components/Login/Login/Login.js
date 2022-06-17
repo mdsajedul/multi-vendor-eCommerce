@@ -113,8 +113,8 @@ const Login = () => {
                                             </div>
                                             <div className="col-lg-4">
                                                 <Form.Label>Gender</Form.Label>
-                                                <select onChange={(event)=>{setGender(event.target.value)}} class="form-select" aria-label="Default select example">
-                                                    <option selected value="male">Male</option>
+                                                <select onChange={(event)=>{setGender(event.target.value)}} className="form-select" aria-label="Default select example">
+                                                    <option defaultValue='male' value="male">Male</option>
                                                     <option value="female">Female</option>
                                                     <option value="other">Other</option>
                                                 </select>
