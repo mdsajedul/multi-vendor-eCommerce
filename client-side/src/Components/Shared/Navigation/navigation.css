@@ -15,7 +15,20 @@
     background-color: white;
 }
 
+.dropdown-ln a{
+    color:#6C6D6E !important
+}
 
+/* .dropdown-content:hover {
+    background-color: #DE7127 !important;
+    color: #6C6D6E !important;
+    opacity: 0.4;
+}
+
+*/
+.dropdown-ln a:hover{
+    color: #DE7127 !important
+} 
 
 .middle-btn {
     background-color: white;

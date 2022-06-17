@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { css } from "@emotion/react";
-import BounceLoader from "react-spinners/BounceLoader";
 import { useDispatch, useSelector } from 'react-redux';
 import Product from '../../Components/Products/Product/Product';
 import { fetchProducts } from './ProductsSlice';
@@ -17,7 +15,7 @@ const Products = () => {
     },[dispatch])
 
    
-
+ 
     console.log(products)
     return (
         <div>

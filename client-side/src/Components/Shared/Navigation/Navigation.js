@@ -8,6 +8,8 @@ import { faCartShopping,faMagnifyingGlass } from '@fortawesome/free-solid-svg-ic
 import { faUser,faHeart } from '@fortawesome/free-regular-svg-icons'
 import dokanIcon from '../../../Assets/icons/dokanIcon.svg'
 import './navigation.css'
+import { useSelector } from 'react-redux';
+import ProfileDropdownMenu from '../ProfileDropdownMenu/ProfileDropdownMenu';
 
 
 const Navigation = () => {
@@ -17,10 +19,13 @@ const Navigation = () => {
         setIsOpen((prevState) => !prevState)
     }
 
+    const {isAuth,isLoading,user,error} = useSelector((state)=>state.loginReducer)
+    console.log(isAuth)
 
-    const shoppingCartIcon = <FontAwesomeIcon icon={faCartShopping} />
-    const userIcon = <FontAwesomeIcon icon={faUser} />
-    const heartIcon = <FontAwesomeIcon icon={faHeart} />
+
+    const shoppingCartIcon = <FontAwesomeIcon style={{color:'#DE7127'}} icon={faCartShopping} />
+    const userIcon = <FontAwesomeIcon style={{color:'#DE7127'}}  icon={faUser} />
+    const heartIcon = <FontAwesomeIcon style={{color:'#DE7127'}} icon={faHeart} />
     const searchIcon = <FontAwesomeIcon icon={faMagnifyingGlass} />
 
 
@@ -34,9 +39,9 @@ const Navigation = () => {
                     <Navbar.Collapse className="justify-content-end">
                         <Link className='top-link' to=''>Customer Care</Link>
                         <Link className='top-link' to=''>Track My Order</Link>
-                        <NavDropdown title="Language" id="collasible-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1">Bangla</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">English</NavDropdown.Item>
+                        <NavDropdown className='dropdown-ln' title="Language" id="collasible-nav-dropdown">
+                            <NavDropdown.Item className='dropdown-content' href="#action/3.1">Bangla</NavDropdown.Item>
+                            <NavDropdown.Item className='dropdown-content' href="#action/3.2">English</NavDropdown.Item>
                         </NavDropdown>
                     </Navbar.Collapse>
                 </Container>
@@ -59,14 +64,23 @@ const Navigation = () => {
                             <Nav>
                                 <button className='middle-btn' onClick={toggleDrawer}>{shoppingCartIcon}</button>
                                 <button className='middle-btn' onClick={toggleDrawer}>{heartIcon}</button>
-                                <Link to='/login' className='middle-btn'> 
-                                    <div className='d-flex align-items-center'>
-                                    {userIcon}
-                                        <div style={{fontSize:'14px',paddingLeft:'10px'}}>
-                                            Login <br /> Signup
-                                        </div>
-                                    </div>  
-                                </Link>
+                                
+                                
+                            {
+                                isAuth? <div className='d-flex   align-items-center'>
+                                    <ProfileDropdownMenu user = {user} isAuth={isAuth} isLoading ={isLoading} error={error}/>
+                                </div> :
+                                    <Link to='/login'  style={{color:'#DE7127'}} className='middle-btn'> 
+                                        <div className='d-flex align-items-center'>
+                                        {userIcon}
+                                            <div style={{fontSize:'14px',paddingLeft:'10px'}}>
+                                                Login <br /> Signup
+                                            </div>
+                                        </div>  
+                                    </Link>
+                            }
+
+                                
 
 
                                 <Drawer
