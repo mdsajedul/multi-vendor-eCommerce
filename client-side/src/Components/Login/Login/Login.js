@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './login.css'
 import loginImg from '../../../Assets/icons/login.svg'
 import { Form } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { login } from './loginSlice';
 import { registration } from './registrationSlice';
 
@@ -19,6 +19,12 @@ const Login = () => {
     const [fullname,setFullname] = useState('')
     const [errMsg,setErrMsg]=useState('')
     const dispatch = useDispatch();
+
+
+    // useEffect(()=>{
+    //     localStorage.setItem('user',JSON.stringify({access_token:user?.access_token,user:user?.user,isAuth:isAuth}))
+
+    // },[isAuth,user.access_token,user.user])
 
     const loginFunc =(e)=>{
         e.preventDefault()

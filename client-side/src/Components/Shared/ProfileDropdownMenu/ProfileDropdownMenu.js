@@ -32,14 +32,14 @@ const ProfileDropdownMenu = ({user,isAuth,isLoading,error}) => {
         <div>
            <div class="container">
             <div>
-            <button   onClick={toggleFunc} class="click">{user.user.name.split(' ')[0]}</button>
+            <button   onClick={toggleFunc} class="click">{user?.user?.name.split(' ')[0]}</button>
 
                 <div class="list card p-2" style={{transform:`scaleY(${transformValue})`}} >
                     
                         <Link to=''> 
                             <table>
                                 {
-                                    user.user.role=== 'user'? 
+                                    user?.user?.role=== 'user'? 
                                 <tr>
                                     <td>{userIcon}</td>
                                     <td>Manage Account</td>

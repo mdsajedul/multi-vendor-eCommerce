@@ -50,7 +50,7 @@ const Home = () => {
 
             <div className='container all-products'>
                 <div>
-                    <h4>Just For You</h4>
+                    <h4 style={{color:'#6C6D6E'}}>Just For You</h4>
                 </div>
             <Products/>
             </div>

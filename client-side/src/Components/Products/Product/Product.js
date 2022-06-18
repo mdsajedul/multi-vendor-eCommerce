@@ -7,21 +7,22 @@ const Product = ({product}) => {
     console.log(product)
 
     return (
-        <Link className='col-lg-2 product-container' to={`productDetail/${product.key || product._id}`}>
+        <div className='col-lg-2 product-container' >
             <div className='    p-1 '>
                 <div className='product-card p-2'>
-                    <div>
+                    <Link to={`productDetail/${product.key || product._id}`}>
                         <div>
-                            <img className='container-fluid' src={`http://localhost:8000/uploads/${product?.thumbnail}`} alt="product" />
+                            <img className='container-fluid product-img' height='160px' src={`http://localhost:8000/uploads/${product?.thumbnail}`} alt="product" />
                         </div> 
-                        <div className='py-3'>
-                            <p>{product.name.substring(0,18)}</p>
-                            <p><b>Price: {product.retailPrice || product.price}$</b> </p>
+                        <div className='py-2 card-content'>
+                            <label>{product.name.substring(0,18)}</label><br />
+                            <label><b>Price: {product.retailPrice || product.price}$</b> </label>
                         </div>
-                    </div>
+                    </Link>
+                    <button className='add-to-cart-btn'>Add to cart</button>
                 </div>
             </div>
-        </Link>
+        </div>
         
     );
 };

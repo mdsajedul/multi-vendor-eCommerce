@@ -1,5 +1,5 @@
 import React from 'react';
-import {Navbar,Container,Nav,NavDropdown,Form,FormControl,Button} from 'react-bootstrap'
+import {Navbar,Container,Nav,NavDropdown} from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import Drawer from 'react-modern-drawer'
 import 'react-modern-drawer/dist/index.css'
@@ -20,10 +20,11 @@ const Navigation = () => {
     }
 
     const {isAuth,isLoading,user,error} = useSelector((state)=>state.loginReducer)
-    sessionStorage.setItem('user',JSON.stringify({access_token:user?.access_token,user:user?.user,isAuth:isAuth}))
+    
 
     
-    const session = JSON.parse(sessionStorage.getItem('user'))
+    const local = JSON.parse(localStorage.getItem('user'))
+    console.log(local.isAuth)
     
 
 
@@ -55,7 +56,7 @@ const Navigation = () => {
             <div className='middle-nav'>
                 <Navbar collapseOnSelect expand="lg"  >
                     <Container>
-                        <Navbar.Brand href="/home"><img src={dokanIcon} height='65px' alt="" /> </Navbar.Brand>
+                        <Link to="/home"><img src={dokanIcon} height='65px' alt="" /> </Link>
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                         <Navbar.Collapse id="responsive-navbar-nav">
                             <Nav className="me-auto ">
@@ -71,7 +72,7 @@ const Navigation = () => {
                                 
                                 
                             {
-                                session.isAuth? <div className='d-flex   align-items-center'>
+                                isAuth? <div className='d-flex   align-items-center'>
                                     <ProfileDropdownMenu user = {user} isAuth={isAuth} isLoading ={isLoading} error={error}/>
                                 </div> :
                                     <Link to='/login'  style={{color:'#DE7127'}} className='middle-btn'> 

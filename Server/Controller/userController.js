@@ -40,6 +40,16 @@ const getProductByCategory = async (req,res,next)=>{
     }
 }
 
+const getProductById = async (req,res,next)=>{
+    try{
+        const product = await Product.findById(req.params.id)
+        res.status(200).json({'message':'Product found','product':product})
+    }
+    catch(err){
+        res.status(500).json({'message':'Someting went wrong, Please try again!'})
+    }
+}
+
 
 // login --tested
 const login = async (req,res,next)=>{
@@ -127,4 +137,4 @@ const changeRole = async (req,res,next)=>{
     }
 }
 
-module.exports = {userRegistration,login,changeRole, getAllProducts, getProductByCategory} 
+module.exports = {userRegistration,login,changeRole, getAllProducts, getProductByCategory,getProductById} 
