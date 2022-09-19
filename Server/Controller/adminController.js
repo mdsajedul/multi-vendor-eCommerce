@@ -40,7 +40,7 @@ const getAllUsers = async (req,res,next)=>{
     }
 }
 
-// all users by role --tested
+// all users by role --tested ok
 const getAllUsersByRole = async (req,res,next)=>{
     try{
         const users = await User.find({role:req.params.role})
