@@ -25,7 +25,7 @@ export default function Navigation() {
       </nav>
 
       {/* mail nav bar  */}
-      <nav className='shadow-md w-full sticky top-0'>
+      <nav className='shadow-md w-full sticky top-0 z-10'>
           <div className='md:flex items-center justify-between bg-white py-3 md:px-10 px-7'>
               <Link to={"/"} className=' font-bold text-2xl cursor-pointer flex items-center font-[Poppins] text-gray-800'>
                   <span className=' z-[3] text-3xl mr-1'>
