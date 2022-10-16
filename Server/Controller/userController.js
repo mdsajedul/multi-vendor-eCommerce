@@ -67,7 +67,7 @@ const login = async (req,res,next)=>{
                 });
 
                 res.status(200).json({
-                    "access_token":token,
+                    "accessToken":token,
                     "message":"Login successfull",
                     "user":user[0]
                 })
@@ -104,7 +104,15 @@ const userRegistration  = async (req,res,next)=>{
         })
         console.log(newUser)
         await newUser.save()
-        res.status(200).json({"message":"Registration Successfull"})
+
+        const token = jwt.sign({
+            email:newUser.email,
+            userId: newUser._id
+        },process.env.JWT_SECRET,{
+            expiresIn:'1h'
+        });
+
+        res.status(200).json({accessToken:token, user: newUser})
 
     }
     catch(err){

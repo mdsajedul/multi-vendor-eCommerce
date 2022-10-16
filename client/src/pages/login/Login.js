@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import loginImage from '../../assets/icons/login.svg';
+import { useLoginMutation, useRegisterMutation } from '../../features/auth/authApi';
 import isValidEmail from '../../utils/isValidEmail';
 
 export default function Login() {
@@ -22,53 +24,71 @@ export default function Login() {
   const [fullname,setFullname] = useState('');
   const [errMsg,setErrMsg]=useState('');
 
+  const [login,{data:loginResData,isLoading, error: loginResError} ] = useLoginMutation();
+  const [register,{data:registerResData,error:registerResError}]= useRegisterMutation();
+
+  const navigate = useNavigate();
+
+  useEffect(()=>{
+        if(loginResError?.data){
+              setErrMsg(loginResError.data)
+        }
+        else if(registerResError?.data){
+              setErrMsg(registerResError.data)
+        }
+        else if(loginResData?.accessToken && loginResData?.user){
+              navigate('/');
+        }
+        else if(registerResData?.accessToken && registerResData?.user){
+              navigate('/');
+        }
+  },[navigate,loginResData,registerResData,loginResError,registerResError])
+
 
 // function for login page and register toggle 
   const handleRegisterActive = ()=>{
-    if(registerActive){
-      setRegisterActive(false)
-    }
-    else{
-      setRegisterActive(true)
-    }
+        if(registerActive){
+            setRegisterActive(false)
+        }
+        else{
+            setRegisterActive(true)
+        }
   }
 
   const handleSubmit = (e)=>{
-    e.preventDefault();
-    if(!registerActive){
-      if(isValidEmail(email)){
-        const loginInfo = {
-          email,
-          password
-        }
-        console.log(loginInfo)
-      }
-      else{
-        setErrMsg('Please enter a valid email')
-      }
-    }
-    else{
-        if(password===rePassword){
-          if(isValidEmail(email)){
-            const regInfo ={
-              fullname,
-              email,
-              password,
-              dob,
-              gender
+        e.preventDefault();
+        setErrMsg('');
+        if(!registerActive){
+            if(isValidEmail(email)){
+              login({
+                email,password
+              })
             }
-            console.log(regInfo)
-          }
-          else{
-            setErrMsg('Please enter a valid email')
-          }
+            else{
+              setErrMsg('Please enter a valid email')
+            }
         }
         else{
-          setErrMsg('Password not matched');
+            if(password===rePassword){
+              if(isValidEmail(email)){
+                    register({
+                      name:fullname,
+                      email,
+                      password,
+                      dob,
+                      gender
+                    })
+              }
+              else{
+                setErrMsg('Please enter a valid email')
+              }
+            }
+            else{
+              setErrMsg('Password not matched');
+            }
         }
-    }
   }
-  console.log(errMsg)
+  // console.log(errMsg)
   return (
     <section className="h-screen">
         <div className="px-6 h-full text-gray-800">
