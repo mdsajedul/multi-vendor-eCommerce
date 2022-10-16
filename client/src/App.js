@@ -1,16 +1,20 @@
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
+import Footer from "./components/shared/Footer";
+import Navigation from "./components/shared/Navigation";
+import Home from "./pages/home/Home";
+import Login from "./pages/login/Login";
 
 function App() {
   return (
     <>
-      <div class="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-lg flex items-center space-x-4">
-        <div class="shrink-0">
-          <img src="/logo192.png" alt="" />
-        </div>
-      <div>
-          <div class="text-xl font-medium text-black">App page</div>
-              <p class="text-slate-500">We are starting from here!</p>
-          </div>
-      </div>
+        <Router>
+            <Navigation/>
+            <Routes>
+                <Route path="/" element={<Home/>}/>
+                <Route path="/login" element={<Login/>}/>
+            </Routes>
+            <Footer/>
+        </Router>
     </>
   );
 }
