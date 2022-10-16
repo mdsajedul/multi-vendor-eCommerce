@@ -6,7 +6,7 @@ import Login from "./pages/login/Login";
 
 function App() {
   return (
-    <>
+    <div className="bg-slate-100">
         <Router>
             <Navigation/>
             <Routes>
@@ -15,7 +15,7 @@ function App() {
             </Routes>
             <Footer/>
         </Router>
-    </>
+    </div>
   );
 }
 
