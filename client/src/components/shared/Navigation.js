@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import logo from "../../assets/icons/dokanIcon.svg"
 import cartIcon from "../../assets/icons/cart.png"
 import loveIcon from "../../assets/icons/love.png"
+import searchIcon from "../../assets/icons/search.png"
 
 export default function Navigation() {
 
@@ -31,7 +32,7 @@ export default function Navigation() {
               {/* search form  */}
               <form className='m-auto w-80 inline-flex'  action="">
                 <input placeholder='Search on Dokan' className="bg-slate-50 border-r-0 border-orange-500 px-1 w-64 rounded-l-sm focus:outline-none focus:border-orange-500 focus:ring-orange-500 text-gray-500" type='text'></input>
-                <button className='bg-orange-500 text-white px-1 border border-l-0 border-orange-500 p-2 rounded-r-sm' type='submit'>Submit</button>
+                <img className='bg-orange-500 text-white px-3 border border-l-0 border-orange-500 p-2 rounded-r-sm cursor-pointer h-11' src={searchIcon}  alt=''/>
               </form>
               
               {/* div  */}
