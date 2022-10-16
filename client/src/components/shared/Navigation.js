@@ -61,7 +61,7 @@ export default function Navigation() {
                 <div className='pr-5'>
                     <img  className='h-6' src={loveIcon} alt="" />
                 </div>
-                {user? <span><ProfileMenu user={user}/></span> : <Link to={"/login"} > SIGNUP / LOGIN</Link>}
+                {user? <span className=''><ProfileMenu user={user}/></span> : <Link to={"/login"} > SIGNUP / LOGIN</Link>}
             </ul>
           </div>
       </nav>

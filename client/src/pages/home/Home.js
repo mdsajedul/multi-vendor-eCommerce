@@ -1,83 +1,13 @@
 import React from 'react'
+import Banner from '../../components/home/banner/Banner'
 
 export default function Home() {
   return (
-    <div>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nemo nihil inventore perferendis minus ducimus enim maiores beatae aspernatur dignissimos excepturi odio nesciunt quaerat omnis esse ea vero, mollitia sapiente.
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium nobis doloribus officiis cumque? Delectus aliquid blanditiis eos temporibus nihil rem, accusantium cum officiis recusandae quidem, quam eaque suscipit vel maxime.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nemo nihil inventore perferendis minus ducimus enim maiores beatae aspernatur dignissimos excepturi odio nesciunt quaerat omnis esse ea vero, mollitia sapiente.
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium nobis doloribus officiis cumque? Delectus aliquid blanditiis eos temporibus nihil rem, accusantium cum officiis recusandae quidem, quam eaque suscipit vel maxime.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nemo nihil inventore perferendis minus ducimus enim maiores beatae aspernatur dignissimos excepturi odio nesciunt quaerat omnis esse ea vero, mollitia sapiente.
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium nobis doloribus officiis cumque? Delectus aliquid blanditiis eos temporibus nihil rem, accusantium cum officiis recusandae quidem, quam eaque suscipit vel maxime.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nemo nihil inventore perferendis minus ducimus enim maiores beatae aspernatur dignissimos excepturi odio nesciunt quaerat omnis esse ea vero, mollitia sapiente.
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium nobis doloribus officiis cumque? Delectus aliquid blanditiis eos temporibus nihil rem, accusantium cum officiis recusandae quidem, quam eaque suscipit vel maxime.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nemo nihil inventore perferendis minus ducimus enim maiores beatae aspernatur dignissimos excepturi odio nesciunt quaerat omnis esse ea vero, mollitia sapiente.
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium nobis doloribus officiis cumque? Delectus aliquid blanditiis eos temporibus nihil rem, accusantium cum officiis recusandae quidem, quam eaque suscipit vel maxime.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nemo nihil inventore perferendis minus ducimus enim maiores beatae aspernatur dignissimos excepturi odio nesciunt quaerat omnis esse ea vero, mollitia sapiente.
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium nobis doloribus officiis cumque? Delectus aliquid blanditiis eos temporibus nihil rem, accusantium cum officiis recusandae quidem, quam eaque suscipit vel maxime.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nemo nihil inventore perferendis minus ducimus enim maiores beatae aspernatur dignissimos excepturi odio nesciunt quaerat omnis esse ea vero, mollitia sapiente.
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium nobis doloribus officiis cumque? Delectus aliquid blanditiis eos temporibus nihil rem, accusantium cum officiis recusandae quidem, quam eaque suscipit vel maxime.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nemo nihil inventore perferendis minus ducimus enim maiores beatae aspernatur dignissimos excepturi odio nesciunt quaerat omnis esse ea vero, mollitia sapiente.
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium nobis doloribus officiis cumque? Delectus aliquid blanditiis eos temporibus nihil rem, accusantium cum officiis recusandae quidem, quam eaque suscipit vel maxime.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nemo nihil inventore perferendis minus ducimus enim maiores beatae aspernatur dignissimos excepturi odio nesciunt quaerat omnis esse ea vero, mollitia sapiente.
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium nobis doloribus officiis cumque? Delectus aliquid blanditiis eos temporibus nihil rem, accusantium cum officiis recusandae quidem, quam eaque suscipit vel maxime.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nemo nihil inventore perferendis minus ducimus enim maiores beatae aspernatur dignissimos excepturi odio nesciunt quaerat omnis esse ea vero, mollitia sapiente.
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium nobis doloribus officiis cumque? Delectus aliquid blanditiis eos temporibus nihil rem, accusantium cum officiis recusandae quidem, quam eaque suscipit vel maxime.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nemo nihil inventore perferendis minus ducimus enim maiores beatae aspernatur dignissimos excepturi odio nesciunt quaerat omnis esse ea vero, mollitia sapiente.
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium nobis doloribus officiis cumque? Delectus aliquid blanditiis eos temporibus nihil rem, accusantium cum officiis recusandae quidem, quam eaque suscipit vel maxime.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nemo nihil inventore perferendis minus ducimus enim maiores beatae aspernatur dignissimos excepturi odio nesciunt quaerat omnis esse ea vero, mollitia sapiente.
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium nobis doloribus officiis cumque? Delectus aliquid blanditiis eos temporibus nihil rem, accusantium cum officiis recusandae quidem, quam eaque suscipit vel maxime.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nemo nihil inventore perferendis minus ducimus enim maiores beatae aspernatur dignissimos excepturi odio nesciunt quaerat omnis esse ea vero, mollitia sapiente.
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium nobis doloribus officiis cumque? Delectus aliquid blanditiis eos temporibus nihil rem, accusantium cum officiis recusandae quidem, quam eaque suscipit vel maxime.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nemo nihil inventore perferendis minus ducimus enim maiores beatae aspernatur dignissimos excepturi odio nesciunt quaerat omnis esse ea vero, mollitia sapiente.
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium nobis doloribus officiis cumque? Delectus aliquid blanditiis eos temporibus nihil rem, accusantium cum officiis recusandae quidem, quam eaque suscipit vel maxime.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nemo nihil inventore perferendis minus ducimus enim maiores beatae aspernatur dignissimos excepturi odio nesciunt quaerat omnis esse ea vero, mollitia sapiente.
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium nobis doloribus officiis cumque? Delectus aliquid blanditiis eos temporibus nihil rem, accusantium cum officiis recusandae quidem, quam eaque suscipit vel maxime.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nemo nihil inventore perferendis minus ducimus enim maiores beatae aspernatur dignissimos excepturi odio nesciunt quaerat omnis esse ea vero, mollitia sapiente.
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium nobis doloribus officiis cumque? Delectus aliquid blanditiis eos temporibus nihil rem, accusantium cum officiis recusandae quidem, quam eaque suscipit vel maxime.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nemo nihil inventore perferendis minus ducimus enim maiores beatae aspernatur dignissimos excepturi odio nesciunt quaerat omnis esse ea vero, mollitia sapiente.
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium nobis doloribus officiis cumque? Delectus aliquid blanditiis eos temporibus nihil rem, accusantium cum officiis recusandae quidem, quam eaque suscipit vel maxime.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nemo nihil inventore perferendis minus ducimus enim maiores beatae aspernatur dignissimos excepturi odio nesciunt quaerat omnis esse ea vero, mollitia sapiente.
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium nobis doloribus officiis cumque? Delectus aliquid blanditiis eos temporibus nihil rem, accusantium cum officiis recusandae quidem, quam eaque suscipit vel maxime.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nemo nihil inventore perferendis minus ducimus enim maiores beatae aspernatur dignissimos excepturi odio nesciunt quaerat omnis esse ea vero, mollitia sapiente.
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium nobis doloribus officiis cumque? Delectus aliquid blanditiis eos temporibus nihil rem, accusantium cum officiis recusandae quidem, quam eaque suscipit vel maxime.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nemo nihil inventore perferendis minus ducimus enim maiores beatae aspernatur dignissimos excepturi odio nesciunt quaerat omnis esse ea vero, mollitia sapiente.
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium nobis doloribus officiis cumque? Delectus aliquid blanditiis eos temporibus nihil rem, accusantium cum officiis recusandae quidem, quam eaque suscipit vel maxime.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nemo nihil inventore perferendis minus ducimus enim maiores beatae aspernatur dignissimos excepturi odio nesciunt quaerat omnis esse ea vero, mollitia sapiente.
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium nobis doloribus officiis cumque? Delectus aliquid blanditiis eos temporibus nihil rem, accusantium cum officiis recusandae quidem, quam eaque suscipit vel maxime.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nemo nihil inventore perferendis minus ducimus enim maiores beatae aspernatur dignissimos excepturi odio nesciunt quaerat omnis esse ea vero, mollitia sapiente.
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium nobis doloribus officiis cumque? Delectus aliquid blanditiis eos temporibus nihil rem, accusantium cum officiis recusandae quidem, quam eaque suscipit vel maxime.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nemo nihil inventore perferendis minus ducimus enim maiores beatae aspernatur dignissimos excepturi odio nesciunt quaerat omnis esse ea vero, mollitia sapiente.
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium nobis doloribus officiis cumque? Delectus aliquid blanditiis eos temporibus nihil rem, accusantium cum officiis recusandae quidem, quam eaque suscipit vel maxime.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nemo nihil inventore perferendis minus ducimus enim maiores beatae aspernatur dignissimos excepturi odio nesciunt quaerat omnis esse ea vero, mollitia sapiente.
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium nobis doloribus officiis cumque? Delectus aliquid blanditiis eos temporibus nihil rem, accusantium cum officiis recusandae quidem, quam eaque suscipit vel maxime.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nemo nihil inventore perferendis minus ducimus enim maiores beatae aspernatur dignissimos excepturi odio nesciunt quaerat omnis esse ea vero, mollitia sapiente.
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium nobis doloribus officiis cumque? Delectus aliquid blanditiis eos temporibus nihil rem, accusantium cum officiis recusandae quidem, quam eaque suscipit vel maxime.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nemo nihil inventore perferendis minus ducimus enim maiores beatae aspernatur dignissimos excepturi odio nesciunt quaerat omnis esse ea vero, mollitia sapiente.
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium nobis doloribus officiis cumque? Delectus aliquid blanditiis eos temporibus nihil rem, accusantium cum officiis recusandae quidem, quam eaque suscipit vel maxime.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nemo nihil inventore perferendis minus ducimus enim maiores beatae aspernatur dignissimos excepturi odio nesciunt quaerat omnis esse ea vero, mollitia sapiente.
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium nobis doloribus officiis cumque? Delectus aliquid blanditiis eos temporibus nihil rem, accusantium cum officiis recusandae quidem, quam eaque suscipit vel maxime.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nemo nihil inventore perferendis minus ducimus enim maiores beatae aspernatur dignissimos excepturi odio nesciunt quaerat omnis esse ea vero, mollitia sapiente.
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium nobis doloribus officiis cumque? Delectus aliquid blanditiis eos temporibus nihil rem, accusantium cum officiis recusandae quidem, quam eaque suscipit vel maxime.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nemo nihil inventore perferendis minus ducimus enim maiores beatae aspernatur dignissimos excepturi odio nesciunt quaerat omnis esse ea vero, mollitia sapiente.
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium nobis doloribus officiis cumque? Delectus aliquid blanditiis eos temporibus nihil rem, accusantium cum officiis recusandae quidem, quam eaque suscipit vel maxime.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nemo nihil inventore perferendis minus ducimus enim maiores beatae aspernatur dignissimos excepturi odio nesciunt quaerat omnis esse ea vero, mollitia sapiente.
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium nobis doloribus officiis cumque? Delectus aliquid blanditiis eos temporibus nihil rem, accusantium cum officiis recusandae quidem, quam eaque suscipit vel maxime.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nemo nihil inventore perferendis minus ducimus enim maiores beatae aspernatur dignissimos excepturi odio nesciunt quaerat omnis esse ea vero, mollitia sapiente.
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium nobis doloribus officiis cumque? Delectus aliquid blanditiis eos temporibus nihil rem, accusantium cum officiis recusandae quidem, quam eaque suscipit vel maxime.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nemo nihil inventore perferendis minus ducimus enim maiores beatae aspernatur dignissimos excepturi odio nesciunt quaerat omnis esse ea vero, mollitia sapiente.
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium nobis doloribus officiis cumque? Delectus aliquid blanditiis eos temporibus nihil rem, accusantium cum officiis recusandae quidem, quam eaque suscipit vel maxime.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nemo nihil inventore perferendis minus ducimus enim maiores beatae aspernatur dignissimos excepturi odio nesciunt quaerat omnis esse ea vero, mollitia sapiente.
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium nobis doloribus officiis cumque? Delectus aliquid blanditiis eos temporibus nihil rem, accusantium cum officiis recusandae quidem, quam eaque suscipit vel maxime.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nemo nihil inventore perferendis minus ducimus enim maiores beatae aspernatur dignissimos excepturi odio nesciunt quaerat omnis esse ea vero, mollitia sapiente.
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium nobis doloribus officiis cumque? Delectus aliquid blanditiis eos temporibus nihil rem, accusantium cum officiis recusandae quidem, quam eaque suscipit vel maxime.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nemo nihil inventore perferendis minus ducimus enim maiores beatae aspernatur dignissimos excepturi odio nesciunt quaerat omnis esse ea vero, mollitia sapiente.
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium nobis doloribus officiis cumque? Delectus aliquid blanditiis eos temporibus nihil rem, accusantium cum officiis recusandae quidem, quam eaque suscipit vel maxime.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nemo nihil inventore perferendis minus ducimus enim maiores beatae aspernatur dignissimos excepturi odio nesciunt quaerat omnis esse ea vero, mollitia sapiente.
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium nobis doloribus officiis cumque? Delectus aliquid blanditiis eos temporibus nihil rem, accusantium cum officiis recusandae quidem, quam eaque suscipit vel maxime.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nemo nihil inventore perferendis minus ducimus enim maiores beatae aspernatur dignissimos excepturi odio nesciunt quaerat omnis esse ea vero, mollitia sapiente.
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium nobis doloribus officiis cumque? Delectus aliquid blanditiis eos temporibus nihil rem, accusantium cum officiis recusandae quidem, quam eaque suscipit vel maxime.
-
-    </div>
+    <div className="grid grid-cols-7 gap-4">
+      <div className='col-span-2'>01</div>
+      <div className='col-span-5'>
+          {/* <Banner/> */}
+      </div>
+  </div>
   )
 }
