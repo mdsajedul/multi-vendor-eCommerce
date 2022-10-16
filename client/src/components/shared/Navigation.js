@@ -4,9 +4,13 @@ import logo from "../../assets/icons/dokanIcon.svg"
 import cartIcon from "../../assets/icons/cart.png"
 import loveIcon from "../../assets/icons/love.png"
 import searchIcon from "../../assets/icons/search.png"
+import ProfileMenu from "../ui/ProfileMenu"
+import { useSelector } from 'react-redux';
 
 export default function Navigation() {
 
+  const {user} = useSelector((state)=> state.auth)
+  console.log(user)
   
   let links = [
       {name:"ABOUT",link:"/"},
@@ -57,7 +61,7 @@ export default function Navigation() {
                 <div className='pr-5'>
                     <img  className='h-6' src={loveIcon} alt="" />
                 </div>
-                <Link to={"/login"} > SIGNUP / LOGIN</Link>
+                {user? <span><ProfileMenu user={user}/></span> : <Link to={"/login"} > SIGNUP / LOGIN</Link>}
             </ul>
           </div>
       </nav>

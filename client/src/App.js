@@ -1,11 +1,19 @@
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 import Footer from "./components/shared/Footer";
 import Navigation from "./components/shared/Navigation";
+import useAuthCheck from "./hooks/useAuthCheck";
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 
 function App() {
-  return (
+
+  const authChecked = useAuthCheck()
+
+  return !authChecked ? (<div>
+    Checking Authentication...
+  </div>) 
+  :  
+  (
     <div className="bg-slate-100">
         <Router>
             <Navigation/>
