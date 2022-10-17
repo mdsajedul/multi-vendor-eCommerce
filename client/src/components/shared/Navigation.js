@@ -55,13 +55,16 @@ export default function Navigation() {
                     </li>
                   ))
                 }
-                <div className='px-5'>
+                <div className='md:px-5 mb-5 md:mb-0'>
                   <img className='h-6'src={cartIcon} alt="" />
                 </div>
-                <div className='pr-5'>
+                <div className='md:pr-5'>
                     <img  className='h-6' src={loveIcon} alt="" />
                 </div>
-                {user? <span className=''><ProfileMenu user={user}/></span> : <Link to={"/login"} > SIGNUP / LOGIN</Link>}
+                <div className='text-center'>
+                    {user? <span className=''><ProfileMenu user={user}/></span> : <Link to={"/login"} > SIGNUP / LOGIN</Link>}
+                </div>
+                
             </ul>
           </div>
       </nav>

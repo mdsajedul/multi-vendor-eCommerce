@@ -24,18 +24,18 @@ export default function Home() {
 
   return (
     <>
-        <div className="grid grid-cols-7 gap-4">
-            <div className='col-span-2'>
+        <div className="md:grid md:grid-cols-7 md:gap-4">
+            <div className='md:col-span-2 '>
                 <Category/>
             </div>
-            <div className='col-span-5'>
+            <div className='md:col-span-5 gird-cols-7'>
                 <Banner/>
             </div>
         </div>
         <div>
 
               {/* flash sale  */}
-            <div className=' m-auto px-7 pt-10 '>
+            <div className=' m-auto md:px-7 px-4 pt-10 '>
                     <h3 className='text-3xl text-gray-700'>Flash Sale</h3>
                     <div className='w-full bg-white'>
                         <div className='flex justify-between px-5 py-2'>
@@ -57,10 +57,10 @@ export default function Home() {
 
           {/* Just for you  */}
 
-            <div className='m-auto px-7 pt-10'>
+            <div className='m-auto md:px-7 px-4 pt-10'>
                 <h3 className='text-3xl text-gray-700'>Just For You</h3>
                 <div  className='w-full'>
-                    <div className='grid grid-cols-6 gap-2 p-2'>
+                    <div className='grid md:grid-cols-6 grid-cols-2 gap-2 p-2'>
                             {
                               productsContent
                             }
