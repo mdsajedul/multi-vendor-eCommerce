@@ -1,18 +1,74 @@
 import React from 'react'
 import Banner from '../../components/home/banner/Banner'
+import ProductCard from '../../components/products/ProductCard';
+import Category from '../../components/shared/Category'
+import Error from '../../components/ui/Error';
+import { useGetProductsQuery } from '../../features/products/productsApi'
 
 export default function Home() {
+  const {data: products, isLoading, isError, error} = useGetProductsQuery();
+
+  let productsContent;
+  if(isLoading){
+    productsContent= <div>Loading...</div>
+  }
+  else if(!isLoading && isError){
+    productsContent= <Error message={error}/>
+  }
+  else if(!isLoading && !isError && products.length === 0){
+    productsContent = <span>No product found!</span>
+  }
+  else if(!isLoading && !isError && products.length > 0){
+    productsContent = products.map(product=> <ProductCard key={product?._id} product={product}/>)
+  }
+
   return (
     <>
         <div className="grid grid-cols-7 gap-4">
-          <div className='col-span-2'>01</div>
-          <div className='col-span-5'>
-              <Banner/>
-          </div>
-      </div>
-      <div>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio blanditiis, esse qui voluptas cupiditate facere architecto aut odit nam ratione non. Reiciendis sit consequuntur, quas sint cumque, consequatur, ipsam illum necessitatibus quam doloremque provident? Dicta rerum, molestias temporibus laborum quo vel error quis nemo consectetur nihil vitae laboriosam sit repellendus porro dolor alias blanditiis sed. Repellat, dignissimos animi! Commodi, ipsa rerum ad obcaecati itaque iure animi deserunt qui totam, porro placeat quisquam quis eveniet modi nisi velit. Eaque doloribus provident dolor modi, optio nesciunt, fugit laboriosam accusantium aliquid, in soluta quo officia fuga! Ullam odit reprehenderit ab totam temporibus a repellendus velit iusto! Officiis vero dolor, amet voluptas inventore dignissimos maiores quos porro provident unde dolorem eum asperiores assumenda laudantium eius. Omnis aliquam dignissimos dolorem, nihil repellat ab voluptatum maiores necessitatibus exercitationem explicabo alias. Aut doloremque odit minima molestias! Temporibus consectetur officia vel officiis fugit maiores deleniti, culpa explicabo adipisci minima commodi placeat autem alias veniam qui laboriosam nulla ipsum architecto iure, voluptates dolore voluptate. Magni blanditiis odio modi natus necessitatibus doloremque tempore impedit beatae dolore veritatis repellendus assumenda iste laborum eum velit placeat rerum, facere consectetur doloribus minus ab sint nihil fugit architecto. Optio, magnam consectetur, nemo doloremque, ad quia ut ipsum a accusantium molestias harum doloribus quaerat maxime illo animi accusamus! Accusantium ab dignissimos tenetur magni dicta reprehenderit minus numquam voluptatem magnam temporibus facilis ad quod reiciendis ex nobis laborum earum, praesentium voluptatibus atque iure eius ut eos. Odit iure, fuga rerum laborum magnam ab sint necessitatibus ea magni aspernatur porro voluptatibus doloribus mollitia alias debitis qui quos dolorum a omnis quae. Modi maxime quidem voluptatibus veniam consectetur qui repellat perferendis aliquam, quia mollitia nihil quas. Beatae dolore alias soluta! Rem, consequuntur. Nobis odio officia blanditiis qui quibusdam, placeat dolorem asperiores quas tempora dolor ipsa inventore impedit expedita rerum esse, voluptatum illum repudiandae saepe molestiae eaque suscipit sit quod voluptates. At voluptates, adipisci quam minus qui unde, odit corrupti impedit magni, praesentium recusandae illum sequi molestias eligendi pariatur maxime quis quisquam cum ex possimus quo quidem incidunt? Maiores molestias laudantium delectus animi a porro quasi nobis, nulla quaerat id, veritatis ea reiciendis impedit nihil nam totam ut voluptatum similique harum odit? A itaque corporis tenetur illum voluptate. Iusto inventore officiis repellat temporibus quae ipsa dolores molestias praesentium ab quaerat quasi ex dignissimos, velit iste, voluptatibus consequatur atque assumenda porro esse eveniet, maxime cum voluptas consectetur hic. Culpa ratione tempora quod ipsum earum incidunt molestias eos aspernatur aliquam labore voluptas accusantium animi obcaecati quibusdam fugiat dolores aliquid iure, reprehenderit sequi repellendus illo, accusamus cum commodi doloribus! Cumque eius maiores repellat ea, beatae et quia accusantium incidunt alias praesentium esse minus, numquam quibusdam. Commodi illum maiores facilis voluptates fuga ipsum modi accusamus, velit dolorem deleniti fugiat animi, delectus non. Corrupti nemo laboriosam sequi deleniti doloribus perferendis omnis. Quo dolorum cum, provident harum officia quasi sed doloremque delectus quis culpa est assumenda recusandae tempore facere animi illum aperiam et at, maxime earum incidunt? Quaerat, et incidunt, natus qui aliquam quo libero sapiente repudiandae numquam blanditiis ullam expedita mollitia velit nisi nihil molestias tenetur? Rem, esse quod? Voluptates repudiandae repellendus veniam, dolore voluptatibus aspernatur ipsum enim quisquam placeat, aliquid repellat, itaque quia? Dicta deserunt excepturi reiciendis, natus recusandae dignissimos, magnam quasi unde debitis, cumque vitae? Autem unde aliquam eius doloremque perspiciatis sapiente quae commodi, illo ratione inventore aperiam? Deleniti ipsam harum facilis, atque explicabo vitae laudantium distinctio consequatur aut dignissimos! Quis cupiditate quam, magni doloribus incidunt repudiandae possimus veritatis tempora quae perferendis sunt labore modi inventore, hic quod molestiae enim, asperiores illum! Alias omnis vitae illo nihil blanditiis modi consequatur? Itaque, accusantium!
-      </div>
+            <div className='col-span-2'>
+                <Category/>
+            </div>
+            <div className='col-span-5'>
+                <Banner/>
+            </div>
+        </div>
+        <div>
+
+              {/* flash sale  */}
+            <div className=' m-auto px-7 pt-10 '>
+                    <h3 className='text-3xl text-gray-700'>Flash Sale</h3>
+                    <div className='w-full bg-white'>
+                        <div className='flex justify-between px-5 py-2'>
+                            <span>On Sale Now</span>
+                            <span>Ending in </span>
+                            <button>SHOP MORE</button>
+                        </div>
+                        <hr />
+                        <div className='columns-6 gap-2 p-2'>
+                            <div>1</div>
+                            <div>2</div>
+                            <div>3</div>
+                            <div>4</div>
+                            <div>5</div>
+                            <div>6</div>
+                        </div>
+                    </div>
+              </div>
+
+          {/* Just for you  */}
+
+            <div className='m-auto px-7 pt-10'>
+                <h3 className='text-3xl text-gray-700'>Just For You</h3>
+                <div  className='w-full'>
+                    <div className='grid grid-cols-6 gap-2 p-2'>
+                            {
+                              productsContent
+                            }
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </>
     
   )
