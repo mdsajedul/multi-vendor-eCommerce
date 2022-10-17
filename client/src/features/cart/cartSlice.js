@@ -35,8 +35,13 @@ const cartSlice = createSlice({
             }
         },
         removeFromCart: (state,action)=>{
+             
             const removeItem = state.cart.filter((item)=>item._id !== action.payload._id);
             state.cart = removeItem;
+            const inShop = state.cart.find((product)=>product.shopId === action.payload.shopId);
+            if(!inShop){
+                state.shop = state.shop.filter((shopInfo)=> shopInfo.shopId !== action.payload.shopId)
+            }
         },
         removeAllFromCart: (state)=>{
             state.cart = [];

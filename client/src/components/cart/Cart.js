@@ -15,7 +15,7 @@ export default function Cart(){
     // now it is constant, it will be dynamic 
     const [shippingFee, setShippingFee] = useState(60)
 
-    const {user} = useSelector((state)=> state.auth)
+    
   
     useEffect(()=>{
       let total = 0;
@@ -30,15 +30,7 @@ export default function Cart(){
       setTotalWithShipping(totalProductPrice+shippingFee)
     },[cart,shippingFee,totalProductPrice])
     
-    let productInCart = shops.map(product=> {
-        let productExist = cart.find(cp=>cp.shopId===product.shopId)
-        if(productExist){
-            return true;
-        }
-        else{
-            return false;
-        }
-    } )
+    
 
     let content ;
     if(shops.length===0){
