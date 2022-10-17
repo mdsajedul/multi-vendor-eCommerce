@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import logo from "../../assets/icons/dokanIcon.svg"
 import cartIcon from "../../assets/icons/cart.png"
@@ -9,8 +9,19 @@ import { useSelector } from 'react-redux';
 
 export default function Navigation() {
 
+  const [productCountOnCart,setProductCountOnCart]= useState(0)
+
   const {user} = useSelector((state)=> state.auth)
-  console.log(user)
+  const {cart} = useSelector((state)=>state.cart)
+
+  useEffect(()=>{
+    let total = 0;
+    cart.forEach(product => {
+      total += product.quantity
+    });
+    setProductCountOnCart(total)
+  },[cart])
+  
   
   let links = [
       {name:"ABOUT",link:"/"},
@@ -55,7 +66,8 @@ export default function Navigation() {
                     </li>
                   ))
                 }
-                <Link to='/cart' className='md:px-5 mb-5 md:mb-0 cursor-pointer'>
+                <Link to='/cart' className='md:px-5 py-3 relative md:mb-0 cursor-pointer'>
+                  <span className='rounded-full px-1 absolute -top-3 md:-top-1 md:left-10 left-6 bg-orange-500 text-white'>{productCountOnCart}</span>
                   <img className='h-6'src={cartIcon} alt="" />
                 </Link>
                 <div className='md:pr-5'>

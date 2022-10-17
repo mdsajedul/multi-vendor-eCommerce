@@ -1,9 +1,11 @@
 
 import {Link} from "react-router-dom"
 import ReactStars from "react-rating-stars-component";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../features/cart/cartSlice";
 export default function ProductCard({product}){
-    console.log(product)
-    const {name,thumbnail,retailPrice,_id} = product || {}
+    const {name,thumbnail,retailPrice,_id} = product || {};
+    const dispatch = useDispatch()
     
     return(
             <div class="max-w-sm bg-white rounded-lg border border-gray-200">
@@ -32,7 +34,7 @@ export default function ProductCard({product}){
                     <div className="flex justify-between">
                         <span className="font-semibold">$ {retailPrice}</span>
                         
-                        <button class="inline-flex items-center py-1 px-2 text-sm text-center text-white bg-blorangeue-700 rounded-lg hover:bg-orange-800 focus:ring-0 focus:outline-none focus:ring-orange-300 dark:bg-orange-600  ">
+                        <button class="inline-flex items-center py-1 px-2 text-sm text-center text-white bg-blorangeue-700 rounded-lg hover:bg-orange-800 focus:ring-0 focus:outline-none focus:ring-orange-300 dark:bg-orange-600  " onClick={()=>dispatch(addToCart(product))}>
                             Add to cart
                         </button>
                     </div>

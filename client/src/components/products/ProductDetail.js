@@ -11,7 +11,6 @@ export default function ProductDetail (){
     const dispatch = useDispatch();
 
     const thisProductInCart = cart.find((item)=>item._id===id);
-    console.log(thisProductInCart)
     const {data: product, isLoading,isError,error} = useGetProductDetailQuery(id);
      
     let content ;
@@ -27,7 +26,7 @@ export default function ProductDetail (){
     else if ( !isLoading && !isError && product?.name){
         content = <div className="p-5 md:columns-2 md:gap-5" >
                         <div className="">
-                            <img class="rounded-t-md w-full " src={`http://localhost:8000/uploads/${product?.thumbnail}`} alt=""/>
+                            <img className="rounded-t-md w-full " src={`http://localhost:8000/uploads/${product?.thumbnail}`} alt=""/>
                         </div>
                         <div>
                             <h2 className="text-2xl font-bold py-3">{product?.name}</h2>
@@ -49,12 +48,12 @@ export default function ProductDetail (){
                             <p className="pb-3">Shop: {product?.shopName}</p>
                             <hr />
                             <div>
-                                <div className="py-3">
+                                {/* <div className="py-3">
                                     <p className="text-lg py-1">Quantity</p>
                                     <button className=" border rounded-l-md border-orange-600 text-3xl px-5 py-2" onClick={()=>dispatch(incrementQuantity(product))}>+</button>
                                     <span className="border border-orange-600 text-3xl px-5 py-1.5">{thisProductInCart?.quantity}</span>
                                     <button className="border rounded-r-md border-orange-600 text-3xl px-5 py-2" onClick={()=>dispatch(decrementQuantity(product))}> - </button>
-                                </div>
+                                </div> */}
                                 <div className="flex justify-between">
                                     <button onClick={()=>dispatch(addToCart(product))}className="bg-orange-600 text-white py-2 px-4 rounded-sm w-2/5">Add To Card</button>
                                     <button className="bg-gray-600 text-white py-2 px-4 rounded-sm w-2/5">Wish List</button>

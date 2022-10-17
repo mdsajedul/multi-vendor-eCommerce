@@ -25,7 +25,7 @@ export default function Home() {
   return (
     <>
         <div className="md:grid md:grid-cols-7 md:gap-4">
-            <div className='md:col-span-2 '>
+            <div className={`md:col-span-2 hidden md:block`}>
                 <Category/>
             </div>
             <div className='md:col-span-5'>
