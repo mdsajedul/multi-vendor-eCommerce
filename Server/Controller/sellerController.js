@@ -35,7 +35,7 @@ const postProduct = async (req,res,next)=>{
             purchasePrice: req.body.purchasePrice,
             retailPrice: req.body.retailPrice,
             productDetail: req.body.productDetail,
-            quantity: req.body.quantity,
+            inStock: req.body.inStock,
             features: req.body.features,
             category:req.body.category,
             pictures: filesName,
@@ -98,7 +98,7 @@ const updateProduct = async (req,res,next)=>{
         product.name = req.body.name
         product.price = req.body.price
         product.productDetail = req.body.productDetail
-        product.quantity = req.body.quantity
+        product.inStock = req.body.inStock
         product.features = req.body.features
         product.category = req.body.category
         product.pictures = filesName

@@ -34,7 +34,7 @@ const ProductSchema = new mongoose.Schema({
     reviews:[{
         review: String, rating: Number, reviewerId: String
     }],
-    quantity: Number,
+    inStock: Number,
     features:[{
         type: String
     }],

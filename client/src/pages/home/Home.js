@@ -28,7 +28,7 @@ export default function Home() {
             <div className='md:col-span-2 '>
                 <Category/>
             </div>
-            <div className='md:col-span-5 gird-cols-7'>
+            <div className='md:col-span-5'>
                 <Banner/>
             </div>
         </div>

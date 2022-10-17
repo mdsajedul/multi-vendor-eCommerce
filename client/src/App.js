@@ -1,4 +1,5 @@
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
+import Cart from "./components/cart/Cart";
 import ProductDetail from "./components/products/ProductDetail";
 import Footer from "./components/shared/Footer";
 import Navigation from "./components/shared/Navigation";
@@ -23,6 +24,7 @@ function App() {
                 <Route path="/" element={<Home/>}/>
                 <Route path="/login" element={<PublicRoute><Login/></PublicRoute>}/>
                 <Route path="/product/:id" element={<ProductDetail/>}/>
+                <Route path="/cart" element={<Cart/>}/>
             </Routes>
             <Footer/>
         </Router>

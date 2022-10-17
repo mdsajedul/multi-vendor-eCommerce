@@ -55,9 +55,9 @@ export default function Navigation() {
                     </li>
                   ))
                 }
-                <div className='md:px-5 mb-5 md:mb-0'>
+                <Link to='/cart' className='md:px-5 mb-5 md:mb-0 cursor-pointer'>
                   <img className='h-6'src={cartIcon} alt="" />
-                </div>
+                </Link>
                 <div className='md:pr-5'>
                     <img  className='h-6' src={loveIcon} alt="" />
                 </div>
