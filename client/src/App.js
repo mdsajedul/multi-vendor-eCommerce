@@ -4,9 +4,12 @@ import ProductDetail from "./components/products/ProductDetail";
 import Footer from "./components/shared/Footer";
 import Navigation from "./components/shared/Navigation";
 import useAuthCheck from "./hooks/useAuthCheck";
+import Dashboard from "./pages/dashboard/Dashboard";
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
+import PrivateRoute from "./pages/login/PrivateRoute";
 import PublicRoute from "./pages/login/PublicRoute";
+import ManageAccount from "./pages/manageAccount/ManageAccount";
 
 function App() {
 
@@ -25,6 +28,13 @@ function App() {
                 <Route path="/login" element={<PublicRoute><Login/></PublicRoute>}/>
                 <Route path="/product/:id" element={<ProductDetail/>}/>
                 <Route path="/cart" element={<Cart/>}/>
+                {/* <Route path="/dashboard" element={<PrivateRoute><Dashboard/></PrivateRoute>}>
+                    <Route path="account" element={<ManageAccount/>} />
+                </Route> */}
+                <Route path="/user" element={<PrivateRoute><Dashboard/></PrivateRoute>}>
+                    <Route path="account" element={<ManageAccount/>} />
+                </Route>
+                {/* <Route path="/account" element={<ManageAccount/>} /> */}
             </Routes>
             <Footer/>
         </Router>
