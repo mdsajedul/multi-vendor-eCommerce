@@ -60,7 +60,7 @@ export default function ProfileMenu({user}) {
             <Menu.Item>
               {({ active }) => (
                 <Link
-                  to='/myorders'
+                  to='/user/myorders'
                   className={classNames(
                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                     'block px-4 py-3 text-lg hover:text-orange-600'
