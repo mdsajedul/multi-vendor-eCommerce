@@ -1,8 +1,13 @@
+import { useState } from "react"
 import { useSelector } from "react-redux"
 
 export default function ManageAccount(){
     const {user} = useSelector((state)=>state.auth)
+    const [profileEditOn,setProfileEditOn] = useState(false)
+    const [addreddEditOn,setAddressEditOn] = useState(false)
     console.log(user)
+
+
     return(
         <div>
             <h3 className="text-xl font-semibold pb-3">Manage My Account</h3>
@@ -34,16 +39,28 @@ export default function ManageAccount(){
                             <div className="flex items-center">
                                 <span className="pr-3">Address Book</span>
                                 <div className="border-orange-300 border-l-2 p-2 h-3"></div>
-                                <button className="text-orange-500">Edit</button>
+                                <button className="text-orange-500" onClick={()=>setAddressEditOn(true)}>Edit</button>
                             </div>
                             <p className="py-2 text-gray-500">DEFAULT SHIPPING ADDRESS </p>
                             <div>
                                 <p className="font-semibold">{user?.name}</p>
+                                {addreddEditOn? 
+                                <div className="p-2">
+                                    <form action="">
+                                    <textarea className="w-full rounded-md border-orange-500 outline-none focus:outline-none focus:ring-orange-600 focus:border-orange-500" name="" placeholder="Enter your full address" id="" cols="30" rows="1"></textarea>
+                                    </form>
+                                    <input className="w-full rounded-md border-orange-500 outline-none focus:outline-none focus:ring-orange-600 focus:border-orange-500" type="text" name="" id="" placeholder="Your active phone number" />
+                                    <div className="flex justify-between">
+                                        <button className="px-3 py-1 text-white rounded-sm bg-orange-600 mt-3" onClick={()=>setAddressEditOn(false)}>Cancel</button>
+                                        <button type="submit" className="px-3 py-1 text-white rounded-sm bg-green-600 mt-3">Submit</button>
+                                    </div>
+                                </div>
+                                : 
                                 <address className="font-light">
                                     Block:C,Road:13,House: 295
                                     Dhaka - Dhaka - North - Bashundhara R/A
                                     (+880) 1780464419
-                                </address>
+                                </address>}
                             </div>
                         </div>
 
@@ -58,11 +75,23 @@ export default function ManageAccount(){
                                 <p className="py-2 text-gray-500">DEFAULT BILLING ADDRESS </p>
                                 <div>
                                     <p className="font-semibold">{user?.name}</p>
+                                    {addreddEditOn? 
+                                    <div className="p-2">
+                                        <form action="">
+                                        <textarea className="w-full rounded-md border-orange-500 outline-none focus:outline-none focus:ring-orange-600 focus:border-orange-500" name="" placeholder="Enter your full address" id="" cols="30" rows="1"></textarea>
+                                        </form>
+                                        <input className="w-full rounded-md border-orange-500 outline-none focus:outline-none focus:ring-orange-600 focus:border-orange-500" type="text" name="" id="" placeholder="Your active phone number" />
+                                        <div className="flex justify-between">
+                                            <button className="px-3 py-1 text-white rounded-sm bg-orange-600 mt-3" onClick={()=>setAddressEditOn(false)}>Cancel</button>
+                                            <button type="submit" className="px-3 py-1 text-white rounded-sm bg-green-600 mt-3">Submit</button>
+                                        </div>
+                                    </div>
+                                    : 
                                     <address className="font-light">
                                         Block:C,Road:13,House: 295
                                         Dhaka - Dhaka - North - Bashundhara R/A
                                         (+880) 1780464419
-                                    </address>
+                                    </address>}
                                 </div>
                             </div>
                         </div>
