@@ -12,7 +12,7 @@ export default function User(){
                 {user?.role==="seller" && 
                 <>
                     <Link className="block font-semibold py-1" to="/user/dashboard">Dashboard</Link>
-                    <Link className="block font-semibold py-1" to="/user/dashboard">Order Received</Link>
+                    <Link className="block font-semibold py-1" to="/user/dashboard/myproducts">My Products</Link>
                     <hr />
                 </>
                 }
