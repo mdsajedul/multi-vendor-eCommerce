@@ -39,6 +39,9 @@ app.use('/user',userRouter)
 app.use('/admin',adminRouter)
 app.use('/seller',sellerRouter)
 app.use('/rider',riderRouter)
+app.get("*", (req, res) => {
+    res.status(404).send("Not Found")
+  });
 
 
 app.listen(PORT,()=>{

@@ -56,7 +56,7 @@ const getAllProducts = async (req,res,next)=>{
     try{
         const shopDetail = await Shop.find({sellerId: req.userId})
         const products = await Product.find({shopId: shopDetail[0]._id})
-        res.status(200).json({'message':'All products of the shop','products':products})
+        res.status(200).json(products)
     }
     catch(err){
         res.status(500).json({'message':'Someting went wrong, Please try again!'})
@@ -134,7 +134,7 @@ const deleteProduct = async (req,res,next)=>{
 const getShop = async (req,res,next)=>{
     try{
         const shopDetail = await Shop.find({sellerId: req.userId})
-        res.status(200).json({'message':'Shop found','shop':shopDetail})
+        res.status(200).json(shopDetail[0])
     }
     catch(err){
         res.status(500).json({'message':'Someting went wrong, Please try again!'})
