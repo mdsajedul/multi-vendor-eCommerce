@@ -130,12 +130,11 @@ const changeRole = async (req,res,next)=>{
         const userId = req.userId;
         console.log(userId)
         const role = req.body.role;
-        const query = {_id: userId}
+        console.log(role)
+        const query = await {_id: userId}
+        console.log(query)
         const respone = await User.findOneAndUpdate(query,{role:role})
-        res.status(200).json({
-            'message':'Updated',
-            'response':respone
-        })
+        res.status(200).json(respone)
     }
     catch(err){
         res.status(500).send({

@@ -34,6 +34,7 @@ export const authApi = apiSlice.injectEndpoints({
                 method:"POST",
                 body:data
             }),
+            providesTags:["user"],
             async onQueryStarted(arg,{queryFulfilled,dispatch}){
                 try{
                     const result = await queryFulfilled;
@@ -52,9 +53,17 @@ export const authApi = apiSlice.injectEndpoints({
 
                 }
             }
+        }),
+        roleChange: builder.mutation({
+            query:(data)=>({
+                url:"user/change-role",
+                method:"PATCH",
+                body:data
+            }),
+            invalidatesTags:["user"]
         })
 
     })
 })
 
-export const {useLoginMutation,useRegisterMutation} = authApi;
+export const {useLoginMutation,useRegisterMutation,useRoleChangeMutation} = authApi;

@@ -31,8 +31,9 @@ export default function Navigation() {
   return (
       <>
       {/* top bar  */}
-      <nav className='w-full z-[3] text-gray-500 relative '>
+      <nav className='w-full z-[3] text-gray-500 relative flex items-center'>
         <p className='px-5 py-1'>Best online shop ever</p>
+        <Link to='beseller' className='hover:text-orange-600'>Sell On Dokan</Link>
       </nav>
 
       {/* mail nav bar  */}
