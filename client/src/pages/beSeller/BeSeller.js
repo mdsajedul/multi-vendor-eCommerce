@@ -17,9 +17,8 @@ export default function BeSeller(){
     const navigate = useNavigate()
 
     const executeAction =()=>{
-        roleChange({role:'user'})
+        roleChange({role:'seller'})
         isSuccess(navigate('/'))
-        console.log('ok')
     }
 
     const handleConfirm = ()=>{

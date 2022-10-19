@@ -9,6 +9,7 @@ const checkLogin = (req,res,next)=>{
         req.email = email;
         req.userId = userId;
         console.log(userId)
+        console.log(email)
         next();
     }
     catch(err){

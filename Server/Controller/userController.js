@@ -127,19 +127,17 @@ const userRegistration  = async (req,res,next)=>{
 // change role  --tested
 const changeRole = async (req,res,next)=>{
     try{
-        const userId = req.userId;
-        console.log(userId)
-        const role = req.body.role;
-        console.log(role)
-        const query = await {_id: userId}
-        console.log(query)
-        const respone = await User.findOneAndUpdate(query,{role:role})
-        res.status(200).json(respone)
+
+        const user = await User.findOneAndUpdate({_id: req.userId},{
+            role: req.body.role
+        },{new:true})
+        res.status(200).json({user:user})
+
     }
     catch(err){
         res.status(500).send({
             "error":err,
-            "message":"Registration failed"
+            "message":"Action failed"
         })
     }
 }

@@ -60,7 +60,27 @@ export const authApi = apiSlice.injectEndpoints({
                 method:"PATCH",
                 body:data
             }),
-            invalidatesTags:["user"]
+            invalidatesTags:["user"],
+            async onQueryStarted(arg, {queryFulfilled,dispatch}){
+                try{
+                    const result = await queryFulfilled;
+
+                    const data = JSON.parse(localStorage.getItem("auth"))
+
+                    localStorage.setItem('auth',JSON.stringify({
+                        accessToken: data.accessToken,
+                        user: result.data.user
+                    }))
+
+                    dispatch(userLoggedIn({
+                        accessToken: data.accessToken,
+                        user: result.data.user,
+                    }))
+                }
+                catch(err){
+
+                }
+            }
         })
 
     })
