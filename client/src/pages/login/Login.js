@@ -6,6 +6,7 @@ import isValidEmail from '../../utils/isValidEmail';
 
 export default function Login() {
 
+  
     // optons for gender dropdown 
     const genderOptions = [
       {value:'', text:'Gender'},
@@ -23,11 +24,13 @@ export default function Login() {
   const [gender,setGender] = useState(genderOptions[0].value);
   const [fullname,setFullname] = useState('');
   const [errMsg,setErrMsg]=useState('');
+  
 
   const [login,{data:loginResData,isLoading, error: loginResError} ] = useLoginMutation();
   const [register,{data:registerResData,error:registerResError}]= useRegisterMutation();
 
   const navigate = useNavigate();
+
 
   useEffect(()=>{
         if(loginResError?.data){
@@ -37,7 +40,7 @@ export default function Login() {
               setErrMsg(registerResError.data)
         }
         else if(loginResData?.accessToken && loginResData?.user){
-              navigate('/');
+              navigate(-1? -1 : '/');
         }
         else if(registerResData?.accessToken && registerResData?.user){
               navigate('/');

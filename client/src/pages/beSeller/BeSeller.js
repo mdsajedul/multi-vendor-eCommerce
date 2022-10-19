@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/ui/Button";
 import ModalAlart from "../../components/ui/ModalAlart";
@@ -12,26 +13,42 @@ export default function BeSeller(){
     const [confirmButton,setConfirmButton] = useState('')
     const [detail,setDetail] = useState('')
     const [heading,setHeading] = useState('')
-
+    const [icon,setIcon] = useState('')
     const [roleChange,{isSuccess}] = useRoleChangeMutation()
     const navigate = useNavigate()
+    const {user} = useSelector((state)=>state.auth)
+    
 
     const executeAction =()=>{
-        roleChange({role:'seller'})
-        isSuccess(navigate('/'))
+        if(user){
+            roleChange({role:'seller'})
+            isSuccess(navigate('/'))
+        }
+        else{
+            navigate('/login')
+        }
+        
     }
 
     const handleConfirm = ()=>{
-        setOpen(true)
-        if(checkBoxOne && checkBoxTwo){
-            setConfirmButton('Confirm');
-            setDetail('Are you sure to be Seller on Dokan');
-            setHeading('Role Change')
-        }
-        else{  
-            setConfirmButton('Ok');
-            setDetail('You have to agree with all terms, condition and privacy policy');
-            setHeading('Allert!') 
+        if(user){
+            setOpen(true)
+            if(checkBoxOne && checkBoxTwo){
+                setConfirmButton('Confirm');
+                setDetail('Are you sure to be Seller on Dokan');
+                setHeading('Role Change')
+                setIcon(1)
+            }
+            else{  
+                setConfirmButton('Ok');
+                setDetail('You have to agree with all terms, condition and privacy policy');
+                setHeading('Allert!') 
+            }
+        }else{
+            setOpen(true);
+            setConfirmButton("Login");
+            setHeading('YOU HAVE LOGIN FIRST')
+            setDetail('For your seller account you have to login')
         }
     }
 
@@ -83,6 +100,7 @@ export default function BeSeller(){
                 executeAction={executeAction}
                 open={open}
                 setOpen={setOpen}
+                icon={icon}
             />
         </div>
     )
