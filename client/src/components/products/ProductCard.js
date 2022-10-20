@@ -7,40 +7,32 @@ export default function ProductCard({product}){
     const {name,thumbnail,retailPrice,_id} = product || {};
     const dispatch = useDispatch()
     
-    return(
-            <div class="max-w-sm bg-white rounded-lg border border-gray-200">
+    return( 
+        <div class="w-full max-w-sm bg-white rounded-lg shadow-md ">
+            <Link to={`/product/${_id}`}>
+                <img class="w-full h-44 rounded-t-lg" src={`http://localhost:8000/uploads/${thumbnail}`} alt="product"/>
+            </Link>
+            <div class="p-2 pb-5">
                 <Link to={`/product/${_id}`}>
-                    <img class="rounded-t-lg h-44 w-full" src={`http://localhost:8000/uploads/${thumbnail}`} alt=""/>
+                    <h5 class="text-base font-semibold tracking-tight text-gray-900 ">{product?.name}</h5>
                 </Link>
-                <div class="p-3">
-                    <Link to={`/product/${_id}`}>
-                        <h5 class="mb-2 text-md font-semibold  text-gray-900 ">{name}</h5>
-                    </Link>
-
-                    <div className="flex justify-items-start items-center mb-1">
-                        <ReactStars
-                            count={5}
-                            value={4.5}
-                            size={20}
-                            activeColor="#ffd700"
-                            edit={false}
-                            isHalf={true}
-                        />
-                        <span> (7)</span>
-                    </div>
-
-                     
-
-                    <div className="flex justify-between">
-                        <span className="font-semibold">$ {retailPrice}</span>
-                        
-                        <button class="inline-flex items-center py-1 px-2 text-sm text-center text-white bg-blorangeue-700 rounded-lg hover:bg-orange-800 focus:ring-0 focus:outline-none focus:ring-orange-300 dark:bg-orange-600  " onClick={()=>dispatch(addToCart(product))}>
-                            Add to cart
-                        </button>
-                    </div>
-
+                <div class="flex items-center mt-2.5 mb-5">
+                    <ReactStars
+                        count={5}
+                        value={4.5}
+                        size={22}
+                        activeColor="#ffd700"
+                        edit={false}
+                        isHalf={true}
+                    />
                     
+                    <span class="bg-orange-100 text-orange-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded ml-3">4.5</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-2xl font-bold text-gray-700">${product?.retailPrice}</span>
+                    <button class="text-white bg-orange-600 hover:bg-orange-700 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-md text-sm px-4 py-2 text-center"  onClick={()=>dispatch(addToCart(product))}>Add to cart</button>
                 </div>
             </div>
+        </div>
     )
 }

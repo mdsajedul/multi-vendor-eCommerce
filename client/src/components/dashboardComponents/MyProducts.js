@@ -144,6 +144,7 @@ export default function MyProducts(){
                 removed. This action cannot be undone.` }
                 confirmButton = "Remove"
                 executeAction={executeAction}
+                icon="delete"
             />
             
         </div>

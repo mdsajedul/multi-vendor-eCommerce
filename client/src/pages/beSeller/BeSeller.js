@@ -37,7 +37,7 @@ export default function BeSeller(){
                 setConfirmButton('Confirm');
                 setDetail('Are you sure to be Seller on Dokan');
                 setHeading('Role Change')
-                setIcon(1)
+                setIcon('confirm')
             }
             else{  
                 setConfirmButton('Ok');
@@ -49,6 +49,7 @@ export default function BeSeller(){
             setConfirmButton("Login");
             setHeading('YOU HAVE LOGIN FIRST')
             setDetail('For your seller account you have to login')
+            setIcon('info')
         }
     }
 

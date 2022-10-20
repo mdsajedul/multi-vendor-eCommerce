@@ -46,9 +46,9 @@ export default function Navigation() {
               </Link>
 
               {/* search form  */}
-              <form className='m-auto w-80 inline-flex'  action="">
-                <input placeholder='Search on Dokan' className="bg-slate-50 border-r-0 border-orange-500 px-1 w-64 rounded-l-sm focus:outline-none focus:border-orange-500 focus:ring-orange-500 text-gray-500" type='text'></input>
-                <img className='bg-orange-500 text-white px-3 border border-l-0 border-orange-500 p-2 rounded-r-sm cursor-pointer h-11' src={searchIcon}  alt=''/>
+              <form className='m-auto w-80 flex items-center'  action="">
+                <input placeholder='Search on Dokan' className="form-control h-10 block w-full my-1.5 px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border  border-solid border-orange-300 rounded-l transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-orange-500 focus:ring-orange-500 focus:outline-none" type='text'></input>
+                <img className=' block my-1.5 px-3 py-2 h-10 text-base font-normal text-white bg-orange-500 hover:bg-orange-600 active:bg-orange-700 rounded-r transition ease-in-out m-0 cursor-pointer' src={searchIcon}  alt=''/>
               </form>
               
               {/* div  */}
