@@ -1,9 +1,10 @@
 import TextInput from "../ui/TextInput";
-import {CameraIcon} from "@heroicons/react/24/solid"
 import { useEffect, useState } from "react";
 import Button from "../ui/Button";
 import { useNavigate } from "react-router-dom";
-
+import { useCreateShopMutation } from "../../features/shop/shopApi";
+import axios from "axios"
+import { useSelector } from "react-redux";
 export default function CreateShop(){
 
     const [shopProfile,setShopProfile] = useState(null)
@@ -14,11 +15,44 @@ export default function CreateShop(){
     const [shopDetail,setShopDetail] = useState('')
     const navigate = useNavigate()
 
+    const [createShop,{isSuccess}] = useCreateShopMutation();
+    const {accessToken} = useSelector((state)=>state.auth)
+
+    useEffect(()=>{
+        if(isSuccess){
+            navigate('user')
+        }
+    })
+
     const handleCancel = ()=>{
         navigate('/')
     }
     const handleSubmit =(e)=>{
         e.preventDefault()
+
+        axios({
+            url:"http://localhost:8000/seller/create-shop",
+            method:"POST",
+            headers:{
+                authorization: `Bearer ${accessToken}`,
+                "Content-Type": "multipart/form-data"
+            },
+            data:{
+                name:shopName,
+                email:shopEmail,
+                phone:shopMobile,
+                description:setShopDetail,
+                file: shopProfile
+            }
+        }).catch((err)=>{}).finally(()=>{navigate("/")})
+
+        // createShop({
+        //     name:shopName,
+        //     email:shopEmail,
+        //     phone:shopMobile,
+        //     description:setShopDetail,
+        //     file: shopProfile
+        // })
     }
 
     useEffect(()=>{
@@ -37,7 +71,7 @@ export default function CreateShop(){
                     <span className="text-xl text-orange-600 font-semibold">Create Your Shop</span>
                 </div>
                 <div className="p-3 bg-white rounded-b">
-                    <form className="px-2" onSubmit={handleSubmit} encType='multipart/form-data'>
+                    <form className="px-2" onSubmit={handleSubmit} encType="multipart/form-data" >
                         <div className="md:grid md:grid-cols-2 md:gap-8 pb-4">
                             <div>
                                 <label className="font-semibold text-gray-600" htmlFor="">Your Shop Name</label>

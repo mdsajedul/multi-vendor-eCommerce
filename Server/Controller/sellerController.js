@@ -174,7 +174,7 @@ const createShop = async (req,res,next)=>{
         const user = await User.find({_id: req.userId})
         console.log(user)
         console.log(req.body)
-        console.log(req.file)
+        console.log("file:",req.file)
         if(user && user.length>0){
             if(user[0].role==='seller'){
                 console.log('seller exists')
