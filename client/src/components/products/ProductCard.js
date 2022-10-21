@@ -3,6 +3,7 @@ import {Link} from "react-router-dom"
 import ReactStars from "react-rating-stars-component";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../features/cart/cartSlice";
+import {ShoppingBagIcon,ShoppingCartIcon} from "@heroicons/react/24/outline"
 export default function ProductCard({product}){
     const {name,thumbnail,retailPrice,_id} = product || {};
     const dispatch = useDispatch()
@@ -30,7 +31,10 @@ export default function ProductCard({product}){
                 </div>
                 <div class="flex justify-between items-center">
                     <span class="text-2xl font-bold text-gray-700">${product?.retailPrice}</span>
-                    <button class="text-white bg-orange-600 hover:bg-orange-700 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-md text-sm px-4 py-2 text-center"  onClick={()=>dispatch(addToCart(product))}>Add to cart</button>
+                    <button class="text-white bg-orange-600 hover:bg-orange-700 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-md text-sm px-4 py-2 text-center"  onClick={()=>dispatch(addToCart(product))}>
+                        <span className="hidden md:block">Add to cart</span>
+                        <ShoppingCartIcon className="h-6 px-3 md:hidden "/>
+                        </button>
                 </div>
             </div>
         </div>

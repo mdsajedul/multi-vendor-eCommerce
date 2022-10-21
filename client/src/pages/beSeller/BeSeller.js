@@ -22,7 +22,7 @@ export default function BeSeller(){
     const executeAction =()=>{
         if(user){
             roleChange({role:'seller'})
-            isSuccess(navigate('/'))
+            isSuccess(navigate('/user/dashboard/createshop'))
         }
         else{
             navigate('/login')

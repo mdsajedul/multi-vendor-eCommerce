@@ -68,7 +68,7 @@ export default function Navigation() {
                   ))
                 }
                 <Link to='/cart' className='md:px-5 py-3 relative md:mb-0 cursor-pointer'>
-                  <span className='rounded-full px-1 absolute -top-3 md:-top-1 md:left-10 left-6 bg-orange-500 text-white'>{productCountOnCart}</span>
+                  {productCountOnCart > 0 && <span className='rounded-full px-1 absolute -top-3 md:-top-1 md:left-10 left-6 bg-orange-500 text-white'>{productCountOnCart}</span>}
                   <img className='h-6'src={cartIcon} alt="" />
                 </Link>
                 <div className='md:pr-5'>

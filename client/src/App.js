@@ -1,5 +1,6 @@
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 import Cart from "./components/cart/Cart";
+import CreateShop from "./components/dashboardComponents/CreateShop";
 import MyProducts from "./components/dashboardComponents/MyProducts";
 import Overview from "./components/dashboardComponents/Overview";
 import ViewProductDetail from "./components/dashboardComponents/ViewProductDetail";
@@ -44,6 +45,7 @@ function App() {
                     <Route path="dashboard" element={<Dashboard/>}>
                         <Route index  element={<Overview/>} />
                         <Route index path="overview" element={<Overview/>} />
+                        <Route index path="createshop" element={<CreateShop/>} />
                         <Route path="myproducts" element={<MyProducts/>} />
                         <Route path="myproducts/:id" element={<ViewProductDetail/>} />
                     </Route>
