@@ -6,6 +6,7 @@ import loveIcon from "../../assets/icons/love.png"
 import searchIcon from "../../assets/icons/search.png"
 import ProfileMenu from "../ui/ProfileMenu"
 import { useSelector } from 'react-redux';
+import { useGetShopQuery } from '../../features/shop/shopApi';
 
 export default function Navigation() {
 
@@ -13,6 +14,7 @@ export default function Navigation() {
 
   const {user} = useSelector((state)=> state.auth)
   const {cart} = useSelector((state)=>state.cart)
+  const {data: shop, isError:isShopError,isLoading: isShopLoading,error:shopError} = useGetShopQuery()
 
   useEffect(()=>{
     let total = 0;
@@ -33,7 +35,11 @@ export default function Navigation() {
       {/* top bar  */}
       <nav className='w-full z-[3] text-gray-500 relative flex items-center'>
         <p className='px-5 py-1'>Best online shop ever</p>
-        <Link to='beseller' className='hover:text-orange-600'>Sell On Dokan</Link>
+        {(!user) && <Link to='beseller' className='hover:text-orange-600'>Sell On Dokan</Link>}
+
+        {(user && user?.role==='user') && <Link to='beseller' className='hover:text-orange-600'>Sell On Dokan</Link>}
+
+        {(user?.role==='seller' && !shop) && <Link to='user/dashboard/createshop' className='hover:text-orange-600'>Create Shop</Link>}
       </nav>
 
       {/* mail nav bar  */}

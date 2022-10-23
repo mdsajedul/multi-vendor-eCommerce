@@ -133,8 +133,16 @@ const deleteProduct = async (req,res,next)=>{
 //get shop  --tested
 const getShop = async (req,res,next)=>{
     try{
+        console.log('hitted')
         const shopDetail = await Shop.find({sellerId: req.userId})
-        res.status(200).json(shopDetail[0])
+        console.log(shopDetail[0])
+        if(shopDetail[0]){
+            res.status(200).json(shopDetail[0])
+        }
+        else{
+            res.status(200).json(undefined)
+        }
+        
     }
     catch(err){
         res.status(500).json({'message':'Someting went wrong, Please try again!'})

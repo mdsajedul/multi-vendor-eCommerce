@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import Button from "../ui/Button";
 import { useNavigate } from "react-router-dom";
 import { useCreateShopMutation } from "../../features/shop/shopApi";
-import axios from "axios"
 import { useSelector } from "react-redux";
 export default function CreateShop(){
 
@@ -16,11 +15,12 @@ export default function CreateShop(){
     const navigate = useNavigate()
 
     const [createShop,{isSuccess}] = useCreateShopMutation();
-    const {accessToken} = useSelector((state)=>state.auth)
+
+    let shop =new FormData()
 
     useEffect(()=>{
         if(isSuccess){
-            navigate('user')
+            navigate('/user/dashboard')
         }
     })
 
@@ -29,31 +29,15 @@ export default function CreateShop(){
     }
     const handleSubmit =(e)=>{
         e.preventDefault()
-
-        axios({
-            url:"http://localhost:8000/seller/create-shop",
-            method:"POST",
-            headers:{
-                authorization: `Bearer ${accessToken}`,
-                "Content-Type": "multipart/form-data"
-            },
-            data:{
-                name:shopName,
-                email:shopEmail,
-                phone:shopMobile,
-                description:setShopDetail,
-                file: shopProfile
-            }
-        }).catch((err)=>{}).finally(()=>{navigate("/")})
-
-        // createShop({
-        //     name:shopName,
-        //     email:shopEmail,
-        //     phone:shopMobile,
-        //     description:setShopDetail,
-        //     file: shopProfile
-        // })
+        shop.append('name',shopName)
+        shop.append('email',shopEmail)
+        shop.append('phone',shopMobile)
+        shop.append('description',shopDetail)
+        shop.append('file',shopProfile)
+      
+        createShop(shop)
     }
+
 
     useEffect(()=>{
         if(!shopProfile){

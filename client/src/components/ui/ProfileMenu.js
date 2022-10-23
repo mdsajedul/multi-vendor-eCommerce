@@ -5,6 +5,7 @@ import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { useDispatch } from 'react-redux'
 import { userLoggedOut } from '../../features/auth/authSlice'
+import { useGetShopQuery } from '../../features/shop/shopApi';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -13,6 +14,7 @@ function classNames(...classes) {
 export default function ProfileMenu({user}) {
 
     const dispatch = useDispatch()
+    const {data: shop, isError:isShopError,isLoading: isShopLoading,error:shopError} = useGetShopQuery()
 
     const logout =()=>{
         dispatch(userLoggedOut());
@@ -58,6 +60,27 @@ export default function ProfileMenu({user}) {
                 </Link>
               )}
             </Menu.Item>}
+            {/* to='user/dashboard/createshop'  */}
+            {(user?.role==='seller' && !shop) && <Menu.Item>
+              {({ active }) => (
+                <Link
+                  to='user/dashboard/createshop'
+                  className={classNames(
+                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    'block px-4 py-3 text-lg hover:text-orange-600'
+                  )}
+                >
+                  <div className='flex items-center '>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+
+                      <span className='ml-3'>Create Shop</span> 
+                  </div>
+                </Link>
+              )}
+            </Menu.Item>}
+
             <Menu.Item>
               {({ active }) => (
                 <Link

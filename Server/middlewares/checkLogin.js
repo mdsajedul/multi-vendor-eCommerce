@@ -13,7 +13,7 @@ const checkLogin = (req,res,next)=>{
         next();
     }
     catch(err){
-        next("Authorization failure!!")
+        next(res.status(401),"Auhtorazation Failure")
     }
 }
 

@@ -1,5 +1,7 @@
 const express = require('express')
 const { createShop,postProduct,getAllProducts, getProductById, getShop,updateShop,getProductByCategory,deleteShop, deleteProduct,updateProduct } = require('../Controller/sellerController')
+
+
 const checkLogin = require('../middlewares/checkLogin')
 const { uploadSingle,uploadMultiple,thumbnail } = require('../middlewares/fileUploader')
 

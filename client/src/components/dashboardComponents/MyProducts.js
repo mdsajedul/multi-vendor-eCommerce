@@ -1,19 +1,22 @@
 import {useState } from "react";
-import { useDispatch } from "react-redux";
-import { Link, useOutletContext } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate, useOutletContext } from "react-router-dom";
+import { userLoggedOut } from "../../features/auth/authSlice";
 import { useDeleteProductBySellerMutation, useGetProductsBySellerQuery } from "../../features/products/productsApi"
+import { useGetShopQuery } from "../../features/shop/shopApi";
 import Error from "../ui/Error";
 import ModalAlart from "../ui/ModalAlart";
 
 export default function MyProducts(){
-    const {data:products,isError,isLoading,error} = useGetProductsBySellerQuery()
-    const [shop,isSopError,isShopLoading,shopError] = useOutletContext()
+    const {data:products,isError,isLoading,error} = useGetProductsBySellerQuery() || {}
+    const {data: shop, isError:isShopError,isLoading: isShopLoading,error:shopError} = useGetShopQuery()
     const [open, setOpen] = useState(false)
     const [removeProductName,setRemoveProductName] = useState('');
     const [removeProductId,setRemoveProductId] = useState('');
     const [deleteProductBySeller] = useDeleteProductBySellerMutation()
-
-
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const {user} = useSelector((state)=>state.auth)
 
     /** 
      * executeAction Method
@@ -34,13 +37,17 @@ export default function MyProducts(){
         setRemoveProductName(name)
         setRemoveProductId(id)
     }
-
+    //This error should not be here, it broke down full page
     let content;
     if(isLoading){
         content=<div>Loading...</div>
     }
-    else if(!isLoading && isError){
-        content = <Error message={error}/>
+    else if(!isLoading && isError){          
+        // content = <Error message={error}/> 
+        if(error.originalStatus===401){
+            dispatch(userLoggedOut())
+            navigate("/login")
+        }
     }
     else if(!isLoading && !isError && products?.length === 0){
         content = <div>You have no product!</div>
@@ -54,7 +61,7 @@ export default function MyProducts(){
                         <div className="mr-2">
                         <img className="w-6 h-6 rounded-full" src={`http://localhost:8000/uploads/${product?.thumbnail}`} alt=""/>
                         </div>
-                        <span className="font-medium">{product.name}</span>
+                        <span className="font-medium">{product?.name}</span>
                     </div>
                 </td>
                 <td className="py-3 px-6 text-left">
@@ -99,6 +106,24 @@ export default function MyProducts(){
 
     return(
         <div>
+          { !shop ?
+            <div className=" p-5 rounded">
+                <div className="bg-orange-100 rounded-t p-3">
+                    <span className="text-xl text-orange-600 font-semibold">My Products</span>
+                </div>
+                <div className="p-3 bg-white rounded-b ">
+                {(user?.role==='seller' && !shop) && 
+                    <div className="">
+                        <span className="block text-lg text-orange-600 text-center pb-2">You havent't create any shop yet.</span>
+                        <span className="block text-lg text-gray-600 text-center">For creating brand new shop <Link to='/user/dashboard/createshop' className='text-orange-600'>Click Here</Link></span>
+                    </div>
+                }
+                </div>
+            </div>
+
+                :
+            <>
+           
             <div className="flex items-center md:mb-4">
                 <img className="w-7 rounded-full" src={`http://localhost:8000/uploads/${shop?.profilePicture}`} alt="" />
                 <span  className="ml-2">{shop?.name}</span>
@@ -146,7 +171,9 @@ export default function MyProducts(){
                 executeAction={executeAction}
                 icon="delete"
             />
-            
+
+        </>
+        }
         </div>
     )
 }
