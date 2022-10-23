@@ -1,10 +1,17 @@
+import { useEffect } from "react"
 import { useSelector } from "react-redux"
 import { Link } from "react-router-dom"
+import { useGetProductsBySellerQuery } from "../../features/products/productsApi"
 import { useGetShopQuery } from "../../features/shop/shopApi"
 
 export default function Overview(){
     const {user} = useSelector((state)=>state.auth)
-    const {data: shop, isError:isShopError,isLoading: isShopLoading,error:shopError} = useGetShopQuery()
+    const {data: shop, isError:isShopError,isLoading: isShopLoading,error:shopError,refetch} = useGetShopQuery()
+    const {refetch : refetchProduct}= useGetProductsBySellerQuery()
+    useEffect(()=>{
+        refetch()
+        refetchProduct()
+    },[refetch,refetchProduct])
     return(
         <div>
             <div className=" p-5 rounded">

@@ -125,7 +125,7 @@ export default function MyProducts(){
             <>
            
             <div className="flex items-center md:mb-4">
-                <img className="w-7 rounded-full" src={`http://localhost:8000/uploads/${shop?.profilePicture}`} alt="" />
+                <img className="w-7 h-7 rounded-full" src={`http://localhost:8000/uploads/${shop?.profilePicture}`} alt="" />
                 <span  className="ml-2">{shop?.name}</span>
             </div>
             <div className="p-5">
