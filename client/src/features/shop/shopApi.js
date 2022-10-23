@@ -13,6 +13,7 @@ export const shopApi = apiSlice.injectEndpoints({
                 method:"POST",
                 body:data,
             }),
+            invalidatesTags:["getShop"]
         }),
     })
 })

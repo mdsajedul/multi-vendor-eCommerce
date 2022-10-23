@@ -17,10 +17,6 @@ export default function Dashboard (){
         }
     }
 
-    // if(shopError?.originalStatus===401){
-    //     dispatch(userLoggedOut())
-    //     navigate("/login")
-    // }
     return(
         <Outlet context={[shop,isShopError,isShopLoading,shopError]}/>
     )

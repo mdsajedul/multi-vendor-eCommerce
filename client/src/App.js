@@ -2,6 +2,7 @@ import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 import Cart from "./components/cart/Cart";
 import CreateShop from "./components/dashboardComponents/CreateShop";
 import MyProducts from "./components/dashboardComponents/MyProducts";
+import MyShop from "./components/dashboardComponents/MyShop";
 import Overview from "./components/dashboardComponents/Overview";
 import ViewProductDetail from "./components/dashboardComponents/ViewProductDetail";
 import All from "./components/myOrderComponents/All";
@@ -47,6 +48,7 @@ function App() {
                         <Route index path="overview" element={<Overview/>} />
                         <Route index path="createshop" element={<CreateShop/>} />
                         <Route path="myproducts" element={<MyProducts/>} />
+                        <Route path="myshop" element={<MyShop/>} />
                         <Route path="myproducts/:id" element={<ViewProductDetail/>} />
                     </Route>
                     <Route path="myorders" element={<MyOrders/>}>
