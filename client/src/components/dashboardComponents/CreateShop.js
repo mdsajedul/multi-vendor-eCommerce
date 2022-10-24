@@ -2,21 +2,31 @@ import TextInput from "../ui/TextInput";
 import { useEffect, useState } from "react";
 import Button from "../ui/Button";
 import { useNavigate } from "react-router-dom";
-import { useCreateShopMutation } from "../../features/shop/shopApi";
+import { useCreateShopMutation, useGetShopQuery } from "../../features/shop/shopApi";
 import { useSelector } from "react-redux";
 export default function CreateShop(){
 
+    const [createShop,{isSuccess}] = useCreateShopMutation();
+    const {data:shop} = useGetShopQuery()
+
     const [shopProfile,setShopProfile] = useState(null)
-    const [preview,setPreview] = useState()
+    const [preview,setPreview] = useState(undefined)
     const [shopName,setShopName] = useState('')
     const [shopEmail,setShopEmail] = useState('')
     const [shopMobile,setShopMobile] = useState('')
     const [shopDetail,setShopDetail] = useState('')
     const navigate = useNavigate()
 
-    const [createShop,{isSuccess}] = useCreateShopMutation();
+    useEffect(()=>{
+        if(shop?.name){
+            setShopName(shop?.name)
+            setShopEmail(shop?.email)
+            setShopMobile(shop?.phone)
+            setShopDetail(shop?.description)
+        }
+    },[shop])
 
-    let shop =new FormData()
+    let shopForm =new FormData()
 
     useEffect(()=>{
         if(isSuccess){
@@ -29,30 +39,33 @@ export default function CreateShop(){
     }
     const handleSubmit =(e)=>{
         e.preventDefault()
-        shop.append('name',shopName)
-        shop.append('email',shopEmail)
-        shop.append('phone',shopMobile)
-        shop.append('description',shopDetail)
-        shop.append('file',shopProfile)
+        shopForm.append('name',shopName)
+        shopForm.append('email',shopEmail)
+        shopForm.append('phone',shopMobile)
+        shopForm.append('description',shopDetail)
+        shopForm.append('file',shopProfile)
       
-        createShop(shop)
+        createShop(shopForm)
     }
-
 
     useEffect(()=>{
         if(!shopProfile){
+            if(shop?.name){
+                setPreview(`http://localhost:8000/uploads/${shop?.profilePicture}`)
+                return
+            }
             setPreview(undefined)
             return
         }
         const objectUrl = URL.createObjectURL(shopProfile)
         setPreview(objectUrl)
         return ()=> URL.revokeObjectURL(objectUrl)
-    },[shopProfile])
+    },[shopProfile,shop])
     return(
         <div>
             <div className=" p-5 rounded">
                 <div className="bg-orange-100 rounded-t p-3">
-                    <span className="text-xl text-orange-600 font-semibold">Create Your Shop</span>
+                    <span className="text-xl text-orange-600 font-semibold">{shop?.name? `Update Shop Info`:`Create Your Shop`}</span>
                 </div>
                 <div className="p-3 bg-white rounded-b">
                     <form className="px-2" onSubmit={handleSubmit} encType="multipart/form-data" >
@@ -64,7 +77,7 @@ export default function CreateShop(){
                             <div className="md:flex items-center justify-center">
                                
                                <div className="md:flex flex-col justify-center items-center">
-                                {shopProfile===null? <label className="font-semibold text-gray-600 cursor-pointer" htmlFor="shopProfileImage">
+                                {preview===undefined? <label className="font-semibold text-gray-600 cursor-pointer" htmlFor="shopProfileImage">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-12 h-12">
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z" />
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z" />
@@ -74,7 +87,7 @@ export default function CreateShop(){
                                     <img className="w-12 h-12 rounded" src={preview} alt="shop" />
                                 }
                                     
-                                    {shopProfile===null? <label className="font-semibold text-gray-600"  htmlFor="">Shop Profile Image</label>
+                                    {preview===undefined? <label className="font-semibold text-gray-600"  htmlFor="">Shop Profile Image</label>
                                     :
                                     <label className="font-semibold text-orange-600 cursor-pointer"  htmlFor="shopProfileImage">Change Image</label>
                                 }
